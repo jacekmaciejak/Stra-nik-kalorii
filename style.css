@@ -48,6 +48,13 @@ h1 {
 
 }
 
+.panel_4 li {
+  font-size: 25px;
+  letter-spacing: 1px;
+  cursor: pointer;
+}
+
+
 
 ul {
   width: 100%;
