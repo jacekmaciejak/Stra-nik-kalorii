@@ -45,16 +45,16 @@ h1 {
   text-decoration: none;
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-around;
 
 }
 
-.panel_4 li {
+.newli {
   font-size: 25px;
   letter-spacing: 1px;
   cursor: pointer;
+  color: blue;
 }
-
-
 
 ul {
   width: 100%;
@@ -81,6 +81,8 @@ button:hover {
   background-color: #000;
   color: #fff;
 }
+
+
 
 footer {
   height: 100%;

@@ -60,26 +60,30 @@ const init = () => {
 
 const showMeat = () => {
   const li = document.createElement("li");
+  li.className = "newli"; //dodajemy nowa klase do stworzonego "li"
   li.textContent = `${meatNames} : ${meatCalories}`;
   document.querySelector(".panel_4").appendChild(li);
 };
 const showVegetables = () => {
   const li = document.createElement("li");
-  li.textContent = `${vegetablesNames}`;
+  li.className = "newli"; //dodajemy nowa klase do stworzonego "li"  li.textContent = `${vegetablesNames}`;
   document.querySelector(".panel_4").appendChild(li);
 };
 const showFruits = () => {
   const li = document.createElement("li");
+  li.className = "newli"; //dodajemy nowa klase do stworzonego "li"
   li.textContent = `${fruitsNames}`;
   document.querySelector(".panel_4").appendChild(li);
 };
 const showAdditions = () => {
   const li = document.createElement("li");
+  li.className = "newli"; //dodajemy nowa klase do stworzonego "li"
   li.textContent = `${additionsNames}`;
   document.querySelector(".panel_4").appendChild(li);
 };
 const showDrinks = () => {
   const li = document.createElement("li");
+  li.className = "newli"; //dodajemy nowa klase do stworzonego "li"
   li.textContent = `${drinksNames}`;
   document.querySelector(".panel_4").appendChild(li);
 };
