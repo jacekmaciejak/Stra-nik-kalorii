@@ -47,6 +47,7 @@ const vegetablesNames = Array.from(vegetables, ({ name }) => name);
 const fruitsNames = Array.from(fruits, ({ name }) => name);
 const additionsNames = Array.from(additions, ({ name }) => name);
 const drinksNames = Array.from(drinks, ({ name }) => name);
+const li = document.createElement("li");
 
 const init = () => {
   const ul = document.createElement("ul");
@@ -58,34 +59,30 @@ const init = () => {
   btnDrinks.addEventListener("click", showDrinks);
 };
 
-const showMeat = () => {
-  const li = document.createElement("li");
+const createLi = () => {
   li.className = "newli"; //dodajemy nowa klase do stworzonego "li"
-  li.textContent = `${meatNames} : ${meatCalories}`;
   document.querySelector(".panel_4").appendChild(li);
+};
+
+const showMeat = () => {
+  createLi();
+  li.textContent = `${meatNames} : ${meatCalories}`;
 };
 const showVegetables = () => {
-  const li = document.createElement("li");
-  li.className = "newli"; //dodajemy nowa klase do stworzonego "li"  li.textContent = `${vegetablesNames}`;
-  document.querySelector(".panel_4").appendChild(li);
+  createLi();
+  li.textContent = `${vegetablesNames}`;
 };
 const showFruits = () => {
-  const li = document.createElement("li");
-  li.className = "newli"; //dodajemy nowa klase do stworzonego "li"
+  createLi();
   li.textContent = `${fruitsNames}`;
-  document.querySelector(".panel_4").appendChild(li);
 };
 const showAdditions = () => {
-  const li = document.createElement("li");
-  li.className = "newli"; //dodajemy nowa klase do stworzonego "li"
+  createLi();
   li.textContent = `${additionsNames}`;
-  document.querySelector(".panel_4").appendChild(li);
 };
 const showDrinks = () => {
-  const li = document.createElement("li");
-  li.className = "newli"; //dodajemy nowa klase do stworzonego "li"
+  createLi();
   li.textContent = `${drinksNames}`;
-  document.querySelector(".panel_4").appendChild(li);
 };
 // const clearPanel = () => {
 //   panel.textContent = "";
