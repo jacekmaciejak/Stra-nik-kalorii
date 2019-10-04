@@ -48,11 +48,28 @@ const fruitsNames = Array.from(fruits, ({ name }) => name);
 const additionsNames = Array.from(additions, ({ name }) => name);
 const drinksNames = Array.from(drinks, ({ name }) => name);
 const li = document.createElement("li");
+const div = document.createElement("div");
+const divQwe = document.querySelector(".qwe");
+const divQwee = document.querySelector(".qwee");
+
+//--------------------------------------------
+
+const Meats = function(name, calories) {
+  this.name = name;
+  this.calories = calories;
+};
+
+const kurczak = new Meats("kurczak", "200");
+console.log(kurczak.name, kurczak.calories);
+divQwe.textContent = kurczak.name;
+divQwee.textContent = kurczak.calories;
+
+//--------------------------------------------
 
 const init = () => {
   const ul = document.createElement("ul");
   ul.style.listStyle = "none";
-  btnMeat.addEventListener("click", showMeat);
+  // btnMeat.addEventListener("click", showMeat);
   btnVegetable.addEventListener("click", showVegetables);
   btnFruits.addEventListener("click", showFruits);
   btnAdditions.addEventListener("click", showAdditions);
@@ -64,10 +81,21 @@ const createLi = () => {
   document.querySelector(".panel_4").appendChild(li);
 };
 
-const showMeat = () => {
-  createLi();
-  li.textContent = `${meatNames} : ${meatCalories}`;
+const showMeat = e => {
+  // div.textContent = `${meatNames} : ${meatCalories}`;
+  // div.textContent = `${meatNames[0]} ${meatNames[1]} ${meatNames[2]} ${meatNames[3]}`;
+  meats.forEach(element => {
+    console.log(element);
+    li.textContent = meatNames;
+  });
+  document.querySelector(".panel_4").appendChild(li);
 };
+btnMeat.addEventListener("click", showMeat);
+
+// const showMeat = () => {
+//   createLi();
+//   li.textContent = `${meatNames} : ${meatCalories}`;
+// };
 const showVegetables = () => {
   createLi();
   li.textContent = `${vegetablesNames}`;
