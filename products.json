@@ -20,8 +20,8 @@
         "id": "2"
       },
       "fields": {
-        "title": "king panel bed",
-        "price": 12.99,
+        "title": "jagnięcina",
+        "calories": 300,
         "image": {
           "fields": {
             "file": {
@@ -36,8 +36,8 @@
         "id": "3"
       },
       "fields": {
-        "title": "single panel bed",
-        "price": 12.99,
+        "title": "kurczak",
+        "calories": 600,
         "image": {
           "fields": {
             "file": {
@@ -52,8 +52,8 @@
         "id": "4"
       },
       "fields": {
-        "title": "twin panel bed",
-        "price": 22.99,
+        "title": "wieprzowina",
+        "calories": 300,
         "image": {
           "fields": {
             "file": {
@@ -68,8 +68,8 @@
         "id": "5"
       },
       "fields": {
-        "title": "fridge",
-        "price": 88.99,
+        "title": "ogórek",
+        "calories": 100,
         "image": {
           "fields": {
             "file": {
@@ -84,8 +84,8 @@
         "id": "6"
       },
       "fields": {
-        "title": "dresser",
-        "price": 32.99,
+        "title": "pomidor",
+        "calories": 150,
         "image": {
           "fields": {
             "file": {
@@ -100,8 +100,8 @@
         "id": "7"
       },
       "fields": {
-        "title": "couch",
-        "price": 45.99,
+        "title": "dynia",
+        "calories": 150,
         "image": {
           "fields": {
             "file": {
@@ -116,8 +116,8 @@
         "id": "8"
       },
       "fields": {
-        "title": "table",
-        "price": 33.99,
+        "title": "papryka",
+        "calories": 550,
         "image": {
           "fields": {
             "file": {
