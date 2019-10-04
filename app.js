@@ -32,6 +32,34 @@ class Products {
 
 //DISPLAY PRODUCTS
 
-//LOCAL STORAGE
+class UI {
+  displayProducts(products) {
+    let result = "";
+    products.forEach(product => {
+      result += `
+            <article class="product">
+                <div class="img-container">
+                    <img src=${product.image} alt="product" class="product-img">
+                    <button class="bag-btn" data-id=${product.id}>
+                        <i class="fas fa-shopping-cart"></i>
+                        dodaj do listy
+                    </button>
+                </div>
+                <h3>${product.title}</h3>
+                <h4>${product.calories} kcal</h4>
+            </article>
+        `;
+    });
+    productsDOM.innerHTML = result;
+  }
+}
 
-//GET ALL PRODUCTS
+//LOCAL STORAGE
+class Storage {}
+document.addEventListener("DOMContentLoaded", () => {
+  const ui = new UI();
+  const products = new Products();
+
+  //GET ALL PRODUCTS
+  products.getProducts().then(products => ui.displayProducts(products));
+});
