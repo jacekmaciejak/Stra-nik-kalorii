@@ -77,6 +77,7 @@ class UI {
         //display cart item
         this.addCartItem(cartItem);
         //show the cart
+        this.showCart();
       });
     });
   }
@@ -105,6 +106,10 @@ class UI {
                         <i class="fas fa-chevron-down" data-id=${item.id}></i>
                     </div>`;
     cartContent.appendChild(div);
+  }
+  showCart() {
+    cartOverlay.classList.add("transparentBcg");
+    cartDOM.classList.add("showCart");
   }
 }
 
