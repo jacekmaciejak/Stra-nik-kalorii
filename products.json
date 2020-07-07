@@ -4,8 +4,7 @@
         "id": "1"
       },
       "fields": {
-        "title": "cielęcina",
-        "calories": 100,
+        "title": "Pizza",
         "image": {
           "fields": {
             "file": {
@@ -20,8 +19,7 @@
         "id": "2"
       },
       "fields": {
-        "title": "jagnięcina",
-        "calories": 300,
+        "title": "Spaghetti",
         "image": {
           "fields": {
             "file": {
@@ -36,8 +34,7 @@
         "id": "3"
       },
       "fields": {
-        "title": "kurczak",
-        "calories": 600,
+        "title": "Hamburger",
         "image": {
           "fields": {
             "file": {
@@ -52,76 +49,11 @@
         "id": "4"
       },
       "fields": {
-        "title": "wieprzowina",
-        "calories": 300,
+        "title": "Salatka",
         "image": {
           "fields": {
             "file": {
               "url": "./images/product-4.jpg"
-            }
-          }
-        }
-      }
-    },
-    {
-      "sys": {
-        "id": "5"
-      },
-      "fields": {
-        "title": "ogórek",
-        "calories": 100,
-        "image": {
-          "fields": {
-            "file": {
-              "url": "./images/product-5.jpeg"
-            }
-          }
-        }
-      }
-    },
-    {
-      "sys": {
-        "id": "6"
-      },
-      "fields": {
-        "title": "pomidor",
-        "calories": 150,
-        "image": {
-          "fields": {
-            "file": {
-              "url": "./images/product-6.jpeg"
-            }
-          }
-        }
-      }
-    },
-    {
-      "sys": {
-        "id": "7"
-      },
-      "fields": {
-        "title": "dynia",
-        "calories": 150,
-        "image": {
-          "fields": {
-            "file": {
-              "url": "./images/product-7.jpeg"
-            }
-          }
-        }
-      }
-    },
-    {
-      "sys": {
-        "id": "8"
-      },
-      "fields": {
-        "title": "papryka",
-        "calories": 550,
-        "image": {
-          "fields": {
-            "file": {
-              "url": "./images/product-8.jpeg"
             }
           }
         }

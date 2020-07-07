@@ -19,7 +19,7 @@ class Products {
       let result = await fetch("products.json");
       let data = await result.json();
       let products = data.items;
-      products = products.map(item => {
+      products = products.map((item) => {
         const { title, calories } = item.fields;
         const { id } = item.sys;
         const image = item.fields.image.fields.file.url;
@@ -31,11 +31,29 @@ class Products {
     }
   }
 }
-//DISPLAY PRODUCTS
+class Meat {
+  async getMeat() {
+    try {
+      let result = await fetch("meat.json");
+      let data = await result.json();
+      let meat = data.items;
+      meat = meat.map((item) => {
+        const { title, calories } = item.fields;
+        const { id } = item.sys;
+        const image = item.fields.image.fields.file.url;
+        return { title, calories, id, image };
+      });
+      return meat;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+}
+//DISPLAY ALL MEALS
 class UI {
   displayProducts(products) {
     let result = "";
-    products.forEach(product => {
+    products.forEach((product) => {
       result += `
             <article class="product">
                 <div class="img-container">
@@ -52,18 +70,38 @@ class UI {
     });
     productsDOM.innerHTML = result;
   }
+
+  displayMeat(meat) {
+    let result = "";
+    meat.forEach((meat) => {
+      result += `
+            <article class="product">
+                <div class="img-container">
+                    <img src=${meat.image} alt="product" class="product-img">
+                    <button class="bag-btn" data-id=${meat.id}>
+                        <i class="fas fa-shopping-cart"></i>
+                        dodaj do listy
+                    </button>
+                </div>
+                <h3>${meat.title}</h3>
+                <h4>${meat.calories} kcal</h4>
+            </article>
+        `;
+    });
+    productsDOM.innerHTML = result;
+  }
   //funkcja pobierajaca przycisk z kart, musimy ja dodac po wczystaniu kart
   getBagButtons() {
     const buttons = [...document.querySelectorAll(".bag-btn")];
     buttonsDOM = buttons;
-    buttons.forEach(button => {
+    buttons.forEach((button) => {
       let id = button.dataset.id;
-      let inCard = cart.find(item => item.id === id);
+      let inCard = cart.find((item) => item.id === id);
       if (inCard) {
         button.innerText = "Dodano do koszyka";
         button.disabled = true;
       }
-      button.addEventListener("click", e => {
+      button.addEventListener("click", (e) => {
         e.target.innerText = "Dodano do koszyka";
         e.target.disabled = true;
         //get product from products
@@ -84,7 +122,7 @@ class UI {
   setCartValues(cart) {
     let tempTotal = 0;
     let itemsTotal = 0;
-    cart.map(item => {
+    cart.map((item) => {
       tempTotal += item.calories * item.amount;
       itemsTotal += item.amount;
     });
@@ -119,7 +157,7 @@ class UI {
     closeCartBtn.addEventListener("click", this.hideCart);
   }
   populateCart(cart) {
-    cart.forEach(item => this.addCartItem(item));
+    cart.forEach((item) => this.addCartItem(item));
   }
   hideCart() {
     cartOverlay.classList.remove("transparentBcg");
@@ -131,7 +169,7 @@ class UI {
       this.clearCart();
     });
     //cart functionality
-    cartContent.addEventListener("click", event => {
+    cartContent.addEventListener("click", (event) => {
       if (event.target.classList.contains("remove-item")) {
         let removeItem = event.target;
         let id = removeItem.dataset.id;
@@ -140,7 +178,7 @@ class UI {
       } else if (event.target.classList.contains("fa-chevron-up")) {
         let addAmount = event.target;
         let id = addAmount.dataset.id;
-        let tempItem = cart.find(item => item.id === id);
+        let tempItem = cart.find((item) => item.id === id);
         tempItem.amount = tempItem.amount + 1;
         Storage.saveCart(cart);
         this.setCartValues(cart);
@@ -148,7 +186,7 @@ class UI {
       } else if (event.target.classList.contains("fa-chevron-down")) {
         let lowerAmount = event.target;
         let id = lowerAmount.dataset.id;
-        let tempItem = cart.find(item => item.id === id);
+        let tempItem = cart.find((item) => item.id === id);
         if (tempItem.amount > 0) {
           Storage.saveCart(cart);
           this.setCartValues(cart);
@@ -162,14 +200,14 @@ class UI {
     });
   }
   clearCart() {
-    let cartItems = cart.map(item => item.id); //pobieramy id
-    cartItems.forEach(id => this.removeItem(id));
+    let cartItems = cart.map((item) => item.id); //pobieramy id
+    cartItems.forEach((id) => this.removeItem(id));
     while (cartContent.children.length > 0) {
       cartContent.removeChild(cartContent.children[0]);
     }
   }
   removeItem(id) {
-    cart = cart.filter(item => item.id !== id);
+    cart = cart.filter((item) => item.id !== id);
     this.setCartValues(cart);
     Storage.saveCart(cart);
     let button = this.getSingleButton(id);
@@ -177,7 +215,7 @@ class UI {
     button.innerHTML = `<i class="fas fa-shopping-cart">add to cart</i>`;
   }
   getSingleButton(id) {
-    return buttonsDOM.find(button => button.dataset.id === id);
+    return buttonsDOM.find((button) => button.dataset.id === id);
   }
 }
 
@@ -188,7 +226,7 @@ class Storage {
   }
   static getProduct(id) {
     let products = JSON.parse(localStorage.getItem("products"));
-    return products.find(product => product.id === id);
+    return products.find((product) => product.id === id);
   }
   static saveCart(cart) {
     localStorage.setItem("cart", JSON.stringify(cart));
@@ -202,12 +240,13 @@ class Storage {
 document.addEventListener("DOMContentLoaded", () => {
   const ui = new UI();
   const products = new Products();
+  const meat = new Meat();
   //SETUP APP
   ui.setupAPP();
   //GET ALL PRODUCTS
   products
     .getProducts()
-    .then(products => {
+    .then((products) => {
       ui.displayProducts(products);
       Storage.saveProducts(products);
     })
@@ -215,4 +254,7 @@ document.addEventListener("DOMContentLoaded", () => {
       ui.getBagButtons();
       ui.cartLogic();
     });
+  meat.getMeat().then((meat) => {
+    ui.displayMeat(meat);
+  });
 });
