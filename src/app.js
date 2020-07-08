@@ -1,12 +1,14 @@
+import "./main.scss";
+
 const cartBtn = document.querySelector(".cart-btn");
-const closeCartBtn = document.querySelector(".close-cart");
-const clearCartBtn = document.querySelector(".clear-cart");
-const cartDOM = document.querySelector(".cart");
-const cartOverlay = document.querySelector(".cart-overlay");
+const closeCartBtn = document.querySelector(".cart__close");
+const clearCartBtn = document.querySelector(".clear__cart");
+const cartDOM = document.querySelector(".cart__wrapper");
+const cartOverlay = document.querySelector(".cart");
 const cartItems = document.querySelector(".cart-items");
-const cartTotal = document.querySelector(".cart-total");
-const cartContent = document.querySelector(".cart-content");
-const productsDOM = document.querySelector(".products-center");
+const cartTotal = document.querySelector(".cart__total");
+const cartContent = document.querySelector(".cart__content");
+const productsDOM = document.querySelector(".products__center");
 //CART
 let cart = [];
 //buttons
@@ -56,10 +58,10 @@ class UI {
     products.forEach((product) => {
       result += `
             <article class="product">
-                <div class="img-container">
-                    <img src=${product.image} alt="product" class="product-img">
-                    <button class="bag-btn" data-id=${product.id}>
-                        <i class="fas fa-shopping-cart"></i>
+                <div class="img__container">
+                    <img src=${product.image} alt="product" class="product__img">
+                    <button class="bag__btn" data-id=${product.id}>
+                        <i class="fas fa__shopping-cart"></i>
                         dodaj do listy
                     </button>
                 </div>
@@ -76,9 +78,9 @@ class UI {
     meat.forEach((meat) => {
       result += `
             <article class="product">
-                <div class="img-container">
-                    <img src=${meat.image} alt="product" class="product-img">
-                    <button class="bag-btn" data-id=${meat.id}>
+                <div class="img__container">
+                    <img src=${meat.image} alt="product" class="product__img">
+                    <button class="bag__btn" data-id=${meat.id}>
                         <i class="fas fa-shopping-cart"></i>
                         dodaj do listy
                     </button>
@@ -92,7 +94,7 @@ class UI {
   }
   //funkcja pobierajaca przycisk z kart, musimy ja dodac po wczystaniu kart
   getBagButtons() {
-    const buttons = [...document.querySelectorAll(".bag-btn")];
+    const buttons = [...document.querySelectorAll(".bag__btn")];
     buttonsDOM = buttons;
     buttons.forEach((button) => {
       let id = button.dataset.id;
@@ -131,7 +133,7 @@ class UI {
   }
   addCartItem(item) {
     const div = document.createElement("div");
-    div.classList.add("cart-item");
+    div.classList.add("cart__item");
     div.innerHTML = `<img src=${item.image} alt="product">
                     <div>
                         <h4>${item.title}</h4>

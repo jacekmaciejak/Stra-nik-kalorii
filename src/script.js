@@ -1,8 +1,10 @@
+import "./main.scss";
+
 const meats = [
   { name: "cielecina", calories: 2000 },
   { name: "jagniecina", calories: 3000 },
   { name: "kurczak", calories: 1000 },
-  { name: "wieprzowina", calories: 4000 }
+  { name: "wieprzowina", calories: 4000 },
 ];
 
 const vegetables = [
@@ -10,28 +12,28 @@ const vegetables = [
   { name: "pomidor", calories: 200 },
   { name: "dynia", calories: 300 },
   { name: "papryka", calories: 400 },
-  { name: "czosnek", calories: 500 }
+  { name: "czosnek", calories: 500 },
 ];
 const fruits = [
   { name: "truskawki", calories: 100 },
   { name: "winogrona", calories: 200 },
   { name: "banan", calories: 300 },
   { name: "porzeczki", calories: 400 },
-  { name: "pomarancze", calories: 500 }
+  { name: "pomarancze", calories: 500 },
 ];
 const additions = [
   { name: "kasza", calories: 100 },
   { name: "ketchup", calories: 200 },
   { name: "musztarda", calories: 300 },
   { name: "chrzan", calories: 400 },
-  { name: "majonez", calories: 500 }
+  { name: "majonez", calories: 500 },
 ];
 const drinks = [
   { name: "woda", calories: 100 },
   { name: "sok naturalny", calories: 200 },
   { name: "napoj gazowany", calories: 300 },
   { name: "kawa", calories: 400 },
-  { name: "herbata", calories: 500 }
+  { name: "herbata", calories: 500 },
 ];
 
 let orderElement = 1;
@@ -54,7 +56,7 @@ const divQwee = document.querySelector(".qwee");
 
 //--------------------------------------------
 
-const Meats = function(name, calories) {
+const Meats = function (name, calories) {
   this.name = name;
   this.calories = calories;
 };
@@ -81,10 +83,10 @@ const createLi = () => {
   document.querySelector(".panel_4").appendChild(li);
 };
 
-const showMeat = e => {
+const showMeat = (e) => {
   // div.textContent = `${meatNames} : ${meatCalories}`;
   // div.textContent = `${meatNames[0]} ${meatNames[1]} ${meatNames[2]} ${meatNames[3]}`;
-  meats.forEach(element => {
+  meats.forEach((element) => {
     console.log(element);
     li.textContent = meatNames;
   });
