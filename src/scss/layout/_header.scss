@@ -14,25 +14,25 @@
         &__title {
             font-size: 3.4rem;
             text-transform: uppercase;
-            letter-spacing: var(--mainSpacing);
+            letter-spacing: $mainSpacing;
             margin-bottom: 3rem;
         }
 
         &__btn {
             padding: 1rem 3rem;
             text-transform: uppercase;
-            letter-spacing: var(--mainSpacing);
+            letter-spacing: $mainSpacing;
             font-size: 1rem;
-            background: var(--primaryColor);
-            color: var(--mainBlack);
-            border: 1px solid var(--primaryColor);
-            transition: var(--mainTransition);
+            background: $primaryColor;
+            color: $mainBlack;
+            border: 1px solid $primaryColor;
+            transition: $mainTransition;
             cursor: pointer;
         }
 
         &__btn:hover {
             background: transparent;
-            color: var(--primaryColor);
+            color: $primaryColor;
         }
     }
 

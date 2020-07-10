@@ -1,12 +1,12 @@
 .products {
     padding: 4rem 0;
 
-    &__title h2 {
+    &__title {
         text-align: center;
         font-size: 2.5rem;
         margin-bottom: 5rem;
         text-transform: capitalize;
-        letter-spacing: var(--mainSpacing);
+        letter-spacing: $mainSpacing;
     }
 
     &__center {
@@ -17,68 +17,83 @@
         grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
         grid-column-gap: 1.5rem;
         grid-row-gap: 2rem;
+
+        .product {
+            .img__container {
+                position: relative;
+                overflow: hidden;
+                cursor: pointer;
+
+                &:hover {
+                    .bag__btn {
+                        transform: translateX(0);
+                    }
+
+                }
+
+                &:hover {
+                    .product__img {
+                        opacity: 0.5;
+                    }
+
+                }
+
+                .product__img {
+                    display: block;
+                    width: 100%;
+                    min-height: 12rem;
+                    transition: $mainTransition;
+                }
+
+                .bag__btn {
+                    position: absolute;
+                    top: 70%;
+                    right: 0;
+                    background: $primaryColor;
+                    border: none;
+                    text-transform: uppercase;
+                    padding: 0.5rem 0.75rem;
+                    letter-spacing: $mainSpacing;
+                    font-weight: bold;
+                    transition: $mainTransition;
+                    transform: translateX(101%);
+                    cursor: pointer;
+
+                    &:hover {
+                        color: $mainWhite;
+                    }
+
+                    .fa__shopping-cart {
+                        margin-right: 0.5rem;
+                    }
+
+                }
+            }
+
+            h3 {
+                text-transform: capitalize;
+                font-size: 1.1rem;
+                margin-top: 1rem;
+                letter-spacing: $mainSpacing;
+                text-align: center;
+            }
+
+            h4 {
+                margin-top: 0.7rem;
+                letter-spacing: $mainSpacing;
+                color: $primaryColor;
+                text-align: center;
+            }
+
+        }
     }
 }
 
 
+// .img__container:hover .bag__btn {
+//     transform: translateX(0);
+// }
 
-.bag__btn {
-    position: absolute;
-    top: 70%;
-    right: 0;
-    background: var(--primaryColor);
-    border: none;
-    text-transform: uppercase;
-    padding: 0.5rem 0.75rem;
-    letter-spacing: var(--mainSpacing);
-    font-weight: bold;
-    transition: var(--mainTransition);
-    transform: translateX(101%);
-    cursor: pointer;
-
-    &:hover {
-        color: var(--mainWhite);
-    }
-}
-
-.fa__shopping-cart {
-    margin-right: 0.5rem;
-}
-
-.img__container:hover .bag__btn {
-    transform: translateX(0);
-}
-
-.product__img {
-    display: block;
-    width: 100%;
-    min-height: 12rem;
-    transition: var(--mainTransition);
-}
-
-.img__container:hover .product__img {
-    opacity: 0.5;
-}
-
-.product {
-    .img__container {
-        position: relative;
-        overflow: hidden;
-        cursor: pointer;
-    }
-
-    h3 {
-        text-transform: capitalize;
-        font-size: 1.1rem;
-        margin-top: 1rem;
-        letter-spacing: var(--mainSpacing);
-        text-align: center;
-    }
-
-    h4 {
-        margin-top: 0.7rem;
-        letter-spacing: var(--mainSpacing);
-        color: var(--primaryColor);
-        text-align: center;
-    }
-}
+// .img__container:hover .product__img {
+//     opacity: 0.5;
+// }

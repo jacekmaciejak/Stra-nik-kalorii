@@ -4,7 +4,7 @@
     right: 0;
     width: 100%;
     height: 100%;
-    transition: var(--mainTransition);
+    transition: all 0.3s linear;
     background: rgba(#f09d51, 0.5);
     z-index: 2;
     visibility: hidden;
@@ -19,10 +19,10 @@
         z-index: 3;
         background: rgb(231, 226, 221);
         padding: 1.5rem;
-        transition: var(--mainTransition);
+        transition: all 0.3s linear;
         transform: translateX(100%);
 
-        &__close {
+        .cart__close {
             font-size: 1.7rem;
             cursor: pointer;
         }
@@ -30,18 +30,35 @@
         h2 {
             text-transform: capitalize;
             text-align: center;
-            letter-spacing: var(--mainSpacing);
+            letter-spacing: 0.1rem;
             margin-bottom: 2rem;
         }
 
-        &__footer {
+        .cart__footer {
             margin-top: 2rem;
-            letter-spacing: var(--mainSpacing);
+            letter-spacing: 0.1rem;
             text-align: center;
 
             h3 {
                 text-transform: capitalize;
                 margin-bottom: 1rem;
+            }
+
+            .banner__btn {
+                padding: 1rem 3rem;
+                text-transform: uppercase;
+                letter-spacing: 0.1rem;
+                font-size: 1rem;
+                background: #f09d51;
+                color: #000;
+                border: 1px solid #f09d51;
+                transition: all 0.3s linear;
+                cursor: pointer;
+            }
+
+            .banner__btn:hover {
+                background: transparent;
+                color: #f09d51;
             }
         }
 
@@ -57,7 +74,7 @@
 }
 
 @media screen and (min-width: 768px) {
-    .cart {
+    .cart__wrapper {
         width: 30vw;
         min-width: 450px;
     }
@@ -79,12 +96,12 @@
     h4 {
         font-size: 0.85rem;
         text-transform: capitalize;
-        letter-spacing: var(--mainSpacing);
+        letter-spacing: 0.1rem;
     }
 
     h5 {
         margin: 0.5rem 0;
-        letter-spacing: var(--mainSpacing);
+        letter-spacing: 0.1rem;
     }
 }
 
@@ -92,13 +109,13 @@
     text-align: center;
 }
 
-.remove-item {
+.remove__item {
     color: grey;
     cursor: pointer;
 }
 
 .fa-chevron-up,
 .fa-chevron-down {
-    color: var(--primaryColor);
+    color: #f09d51;
     cursor: pointer;
 }

@@ -1,11 +1,11 @@
 import "./main.scss";
 
-const cartBtn = document.querySelector(".cart-btn");
+const cartBtn = document.querySelector(".cart__btn");
 const closeCartBtn = document.querySelector(".cart__close");
 const clearCartBtn = document.querySelector(".clear__cart");
 const cartDOM = document.querySelector(".cart__wrapper");
 const cartOverlay = document.querySelector(".cart");
-const cartItems = document.querySelector(".cart-items");
+const cartItems = document.querySelector(".cart__items");
 const cartTotal = document.querySelector(".cart__total");
 const cartContent = document.querySelector(".cart__content");
 const productsDOM = document.querySelector(".products__center");
@@ -59,7 +59,7 @@ class UI {
       result += `
             <article class="product">
                 <div class="img__container">
-                    <img src=${product.image} alt="product" class="product__img">
+                    <img src=${product.image} alt="product image" class="product__img">
                     <button class="bag__btn" data-id=${product.id}>
                         <i class="fas fa__shopping-cart"></i>
                         dodaj do listy
@@ -79,9 +79,9 @@ class UI {
       result += `
             <article class="product">
                 <div class="img__container">
-                    <img src=${meat.image} alt="product" class="product__img">
+                    <img src=${meat.image} alt="product image" class="product__img">
                     <button class="bag__btn" data-id=${meat.id}>
-                        <i class="fas fa-shopping-cart"></i>
+                        <i class="fas fa__shopping-cart"></i>
                         dodaj do listy
                     </button>
                 </div>
@@ -138,7 +138,7 @@ class UI {
                     <div>
                         <h4>${item.title}</h4>
                         <h5>${item.calories}</h5>
-                        <span class="remove-item" data-id=${item.id}>remove</span>
+                        <span class="remove__item" data-id=${item.id}>remove</span>
                     </div>
                     <div>
                         <i class="fas fa-chevron-up" data-id=${item.id}></i>
@@ -172,7 +172,7 @@ class UI {
     });
     //cart functionality
     cartContent.addEventListener("click", (event) => {
-      if (event.target.classList.contains("remove-item")) {
+      if (event.target.classList.contains("remove__item")) {
         let removeItem = event.target;
         let id = removeItem.dataset.id;
         cartContent.removeChild(removeItem.parentElement.parentElement);
@@ -214,7 +214,7 @@ class UI {
     Storage.saveCart(cart);
     let button = this.getSingleButton(id);
     button.disabled = false;
-    button.innerHTML = `<i class="fas fa-shopping-cart">add to cart</i>`;
+    button.innerHTML = `<i class="fas fa__shopping-cart">add to cart</i>`;
   }
   getSingleButton(id) {
     return buttonsDOM.find((button) => button.dataset.id === id);

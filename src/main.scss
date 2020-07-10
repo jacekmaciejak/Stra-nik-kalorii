@@ -3,18 +3,10 @@
 @import"scss/components/navbar";
 @import"scss/components/cart";
 
-
 @import"scss/abstracts/variables";
 
 @import"scss/layout/header";
 @import"scss/layout/products";
-
-
-
-
-
-
-
 
 * {
     margin: 0;
@@ -23,7 +15,7 @@
 }
 
 body {
-    color: var(--mainBlack);
-    background: var(--mainWhite);
+    color: $mainBlack;
+    background: $mainWhite;
     font-family: "Lato", sans-serif;
 }

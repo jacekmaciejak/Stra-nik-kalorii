@@ -8,7 +8,7 @@
      background: rgb(231, 226, 221);
      z-index: 1;
 
-     &-center {
+     &__center {
          width: 100%;
          max-width: 1170px;
          margin: 0 auto;
@@ -17,22 +17,22 @@
          justify-content: space-between;
          padding: 0 1.5rem;
 
-         .nav-icon {
+         .navbar__icon {
              font-size: 1.5rem;
          }
 
-         .cart-btn {
+         .cart__btn {
              position: relative;
              cursor: pointer;
 
-             .cart-items {
+             .cart__items {
                  position: absolute;
                  top: -8px;
                  right: -8px;
-                 background: var(--primaryColor);
+                 background: #f09d51;
                  padding: 0 5px;
                  border-radius: 30%;
-                 color: var(--mainWhite);
+                 color: #fff;
              }
          }
      }
