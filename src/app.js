@@ -9,12 +9,31 @@ const cartItems = document.querySelector(".cart__items");
 const cartTotal = document.querySelector(".cart__total");
 const cartContent = document.querySelector(".cart__content");
 const productsDOM = document.querySelector(".products__center");
+const headerBannerDOM = document.querySelector(".banner");
 //CART
 let cart = [];
 //buttons
 let buttonsDOM = [];
 
 //GETTING THE PRODUCTS
+class listOfProducts {
+  async getlistOfProducts() {
+    try {
+      let result = await fetch("groupofproducts.json");
+      let data = await result.json();
+      let products = data.items;
+      products = products.map((item) => {
+        const { title } = item.fields;
+        const { id } = item.sys;
+        const image = item.fields.image.fields.file.url;
+        return { title, id, image };
+      });
+      return products;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+}
 class Products {
   async getProducts() {
     try {
@@ -53,6 +72,24 @@ class Meat {
 }
 //DISPLAY ALL MEALS
 class UI {
+  displaylistOfProducts(products) {
+    let result = "";
+    products.forEach((product) => {
+      result += `
+            <article class="product">
+                <div class="img__container">
+                    <img src=${product.image} alt="product image" class="product__img">
+                    <button class="bag__btn" data-id=${product.id}>
+                        <i class="fas fa__shopping-cart"></i>
+                        dodaj do listy
+                    </button>
+                </div>
+                <h3>${product.title}</h3>
+            </article>
+        `;
+    });
+    headerBannerDOM.innerHTML = result;
+  }
   displayProducts(products) {
     let result = "";
     products.forEach((product) => {
@@ -226,6 +263,9 @@ class Storage {
   static saveProducts(products) {
     localStorage.setItem("products", JSON.stringify(products));
   }
+  static saveMeat(meat) {
+    localStorage.setItem("meat", JSON.stringify(meat));
+  }
   static getProduct(id) {
     let products = JSON.parse(localStorage.getItem("products"));
     return products.find((product) => product.id === id);
@@ -241,6 +281,7 @@ class Storage {
 }
 document.addEventListener("DOMContentLoaded", () => {
   const ui = new UI();
+  const listofproducts = new listOfProducts();
   const products = new Products();
   const meat = new Meat();
   //SETUP APP
@@ -256,7 +297,14 @@ document.addEventListener("DOMContentLoaded", () => {
       ui.getBagButtons();
       ui.cartLogic();
     });
-  meat.getMeat().then((meat) => {
-    ui.displayMeat(meat);
-  });
+  meat
+    .getMeat()
+    .then((meat) => {
+      ui.displayMeat(meat);
+      Storage.saveMeat(meat);
+    })
+    .then(() => {
+      ui.getBagButtons();
+      ui.cartLogic();
+    });
 });

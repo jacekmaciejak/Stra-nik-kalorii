@@ -1,0 +1,63 @@
+{
+    "items": [{
+            "sys": {
+                "id": "1"
+            },
+            "fields": {
+                "title": "warzywa",
+                "image": {
+                    "fields": {
+                        "file": {
+                            "url": "./images/product-1.jpg"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "sys": {
+                "id": "2"
+            },
+            "fields": {
+                "title": "mięso",
+                "image": {
+                    "fields": {
+                        "file": {
+                            "url": "./images/product-2.jpg"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "sys": {
+                "id": "3"
+            },
+            "fields": {
+                "title": "nabiał",
+                "image": {
+                    "fields": {
+                        "file": {
+                            "url": "./images/product-3.jpg"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "sys": {
+                "id": "4"
+            },
+            "fields": {
+                "title": "napoje",
+                "image": {
+                    "fields": {
+                        "file": {
+                            "url": "./images/product-4.jpg"
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}
