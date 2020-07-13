@@ -17,7 +17,7 @@ let buttonsDOM = [];
 
 //GETTING THE PRODUCTS
 class listOfProducts {
-  async getlistOfProducts() {
+  async getListOfProducts() {
     try {
       let result = await fetch("groupofproducts.json");
       let data = await result.json();
@@ -72,17 +72,13 @@ class Meat {
 }
 //DISPLAY ALL MEALS
 class UI {
-  displaylistOfProducts(products) {
+  displayListOfProducts(products) {
     let result = "";
     products.forEach((product) => {
       result += `
             <article class="product">
                 <div class="img__container">
                     <img src=${product.image} alt="product image" class="product__img">
-                    <button class="bag__btn" data-id=${product.id}>
-                        <i class="fas fa__shopping-cart"></i>
-                        dodaj do listy
-                    </button>
                 </div>
                 <h3>${product.title}</h3>
             </article>
@@ -287,6 +283,9 @@ document.addEventListener("DOMContentLoaded", () => {
   //SETUP APP
   ui.setupAPP();
   //GET ALL PRODUCTS
+  listofproducts.getListOfProducts().then((products) => {
+    ui.displayListOfProducts(products);
+  });
   products
     .getProducts()
     .then((products) => {

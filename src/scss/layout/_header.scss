@@ -1,40 +1,56 @@
 .banner__img {
     min-height: calc(100vh - 60px);
-    background: url("../images/hero-bcg.jpeg") center/cover no-repeat;
+    background: url("../images/hero-bcg.jpg") center/cover no-repeat;
     display: flex;
     align-items: center;
     justify-content: center;
 
     .banner {
-        text-align: center;
-        background: rgba(255, 255, 255, 0.8);
-        display: inline-block;
-        padding: 2rem;
+        width: 90vw;
+        margin: 0 auto;
+        max-width: 1200px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        grid-column-gap: 1.5rem;
+        grid-row-gap: 2rem;
 
-        &__title {
-            font-size: 3.4rem;
-            text-transform: uppercase;
-            letter-spacing: $mainSpacing;
-            margin-bottom: 3rem;
-        }
+        .product {
 
-        &__btn {
-            padding: 1rem 3rem;
-            text-transform: uppercase;
-            letter-spacing: $mainSpacing;
-            font-size: 1rem;
-            background: $primaryColor;
-            color: $mainBlack;
-            border: 1px solid $primaryColor;
-            transition: $mainTransition;
-            cursor: pointer;
-        }
+            .img__container {
+                position: relative;
+                overflow: hidden;
+                cursor: pointer;
+                border: 2px solid #fff;
 
-        &__btn:hover {
-            background: transparent;
-            color: $primaryColor;
+                &:hover {
+                    .bag__btn {
+                        transform: translateX(0);
+                    }
+                }
+
+                &:hover {
+                    .product__img {
+                        opacity: 0.5;
+                    }
+                }
+
+                .product__img {
+                    display: block;
+                    width: 100%;
+                    min-height: 12rem;
+                    transition: $mainTransition;
+                }
+
+            }
+
+            h3 {
+                text-transform: capitalize;
+                margin-top: 1rem;
+                letter-spacing: $mainSpacing;
+                text-align: center;
+                color: #fff;
+
+            }
         }
     }
-
-
 }

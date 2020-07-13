@@ -8,7 +8,7 @@
                 "image": {
                     "fields": {
                         "file": {
-                            "url": "./images/product-1.jpg"
+                            "url": "./images/product-12.jpg"
                         }
                     }
                 }
@@ -23,7 +23,7 @@
                 "image": {
                     "fields": {
                         "file": {
-                            "url": "./images/product-2.jpg"
+                            "url": "./images/product-10.jpg"
                         }
                     }
                 }
@@ -38,7 +38,7 @@
                 "image": {
                     "fields": {
                         "file": {
-                            "url": "./images/product-3.jpg"
+                            "url": "./images/product-9.jpg"
                         }
                     }
                 }
@@ -53,7 +53,7 @@
                 "image": {
                     "fields": {
                         "file": {
-                            "url": "./images/product-4.jpg"
+                            "url": "./images/product-11.jpg"
                         }
                     }
                 }
