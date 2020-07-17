@@ -1,4 +1,5 @@
 import "./main.scss";
+import axios from "axios";
 
 const cartBtn = document.querySelector(".cart__btn");
 const closeCartBtn = document.querySelector(".cart__close");
@@ -330,3 +331,17 @@ document.addEventListener("DOMContentLoaded", () => {
   //     ui.cartLogic();
   //   });
 });
+
+async function getResults(query) {
+  const proxy = "https://cors-anywhere.herokuapp.com/";
+  try {
+    const res = await axios(
+      `${proxy}http://forkify-api.herokuapp.com/api/search?&q=${query}`
+    );
+    const recipes = res.data.recipes;
+    console.log(recipes);
+  } catch (error) {
+    alert(error);
+  }
+}
+getResults("pizza");
