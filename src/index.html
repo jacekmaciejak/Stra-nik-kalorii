@@ -11,18 +11,29 @@
     content="Jacek Maciejak" />
   <link rel="stylesheet"
     href="style.css" />
-  <script src="https://kit.fontawesome.com/efbbd144d1.js"
-    crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/efbbd144d1.js"></script>
   <title>Strażnik kalorii</title>
 </head>
 
 <body>
   <nav class="navbar">
     <div class="navbar__center">
-      <span class="navbar__icon">
+      <!-- <span class="navbar__icon">
         <i class="fas fa-bars"></i>
-      </span>
+      </span> -->
       <p>STRAŻNIK KALORII</p>
+      <form class="search">
+        <input type="text"
+          class="search__field"
+          placeholder="Search over pizza, bacon and broccoli recipes..." />
+        <button class="btn search__btn">
+          <svg class="search__icon">
+            <use href="./images/icons.svg#icon-magnifying-glass">
+            </use>
+          </svg>
+          <span>Search</span>
+        </button>
+      </form>
       <div class="cart__btn">
         <span class="navbar__icon">
           <i class="fas fa-cart-plus"></i>
@@ -35,15 +46,14 @@
   </nav>
   <!--HERO-->
   <header class="banner__img">
-    <sections class="banner">
-    </sections>
+    <sections class="banner"> </sections>
   </header>
   <!--HERO-->
   <!--PRODUCTS-->
   <section class="products">
-    <div class="products__title">
-      <h2>Lista produktów</h2>
-    </div>
+    <!-- <div class="products__title">
+        <h2>Lista produktów</h2>
+      </div> -->
     <div class="products__center"></div>
   </section>
   <!--PRODUCTS-->
@@ -54,8 +64,7 @@
         <i class="fas fa-window-close"></i>
       </span>
       <h2>Your cart</h2>
-      <div class="cart__content">
-      </div>
+      <div class="cart__content"></div>
       <div class="cart__footer">
         <h3>your total : kcal <span class="cart__total">0</span></h3>
         <button class="clear__cart banner__btn">clear cart</button>

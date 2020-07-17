@@ -12,6 +12,8 @@ const productsDOM = document.querySelector(".products__center");
 const headerBannerDOM = document.querySelector(".banner");
 //CART
 let cart = [];
+//List of products
+let mainProducts = [];
 //buttons
 let buttonsDOM = [];
 
@@ -76,7 +78,7 @@ class UI {
     let result = "";
     products.forEach((product) => {
       result += `
-            <article class="product">
+            <article class="product mainProduct" data-id=${product.id}>
                 <div class="img__container">
                     <img src=${product.image} alt="product image" class="product__img">
                 </div>
@@ -154,6 +156,25 @@ class UI {
       });
     });
   }
+  //funkcja wyswietlajaca produkty po wybraniu grupy produktó
+  showProducts() {
+    const productsList = [...document.querySelectorAll(".mainProduct")];
+    mainProducts = productsList;
+    productsList.forEach((product) => {
+      let id = product.dataset.id;
+      product.addEventListener("click", (e) => {
+        e.preventDefault();
+        // console.log(id);
+        if (id === "1") {
+          this.displayMeat(Meat);
+          console.log("1");
+        } else if (id === "2") {
+          console.log("2");
+        }
+      });
+    });
+  }
+
   setCartValues(cart) {
     let tempTotal = 0;
     let itemsTotal = 0;
@@ -275,35 +296,37 @@ class Storage {
       : [];
   }
 }
+//wywolanie funkcji przy ładowaniu strony
 document.addEventListener("DOMContentLoaded", () => {
   const ui = new UI();
   const listofproducts = new listOfProducts();
-  const products = new Products();
-  const meat = new Meat();
+  // const products = new Products();
+  // const meat = new Meat();
   //SETUP APP
   ui.setupAPP();
   //GET ALL PRODUCTS
   listofproducts.getListOfProducts().then((products) => {
     ui.displayListOfProducts(products);
   });
-  products
-    .getProducts()
-    .then((products) => {
-      ui.displayProducts(products);
-      Storage.saveProducts(products);
-    })
-    .then(() => {
-      ui.getBagButtons();
-      ui.cartLogic();
-    });
-  meat
-    .getMeat()
-    .then((meat) => {
-      ui.displayMeat(meat);
-      Storage.saveMeat(meat);
-    })
-    .then(() => {
-      ui.getBagButtons();
-      ui.cartLogic();
-    });
+  // products
+  //   .getProducts()
+  //   .then((products) => {
+  //     ui.displayProducts(products);
+  //     Storage.saveProducts(products);
+  //     ui.showProducts();
+  //   })
+  //   .then(() => {
+  //     ui.getBagButtons();
+  //     ui.cartLogic();
+  //   });
+  // meat
+  //   .getMeat()
+  //   .then((meat) => {
+  //     ui.displayMeat(meat);
+  //     Storage.saveMeat(meat);
+  //   })
+  //   .then(() => {
+  //     ui.getBagButtons();
+  //     ui.cartLogic();
+  //   });
 });
