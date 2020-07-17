@@ -1,5 +1,44 @@
 import "./main.scss";
-import axios from "axios";
+import Search from "./js/models/Search";
+
+const state = {};
+
+const controlSearch = async () => {
+  //1)get query from the view
+  const query = "pizza";
+
+  if (query) {
+    //2) New search object and add to state
+    state.search = new Search(query);
+    //3)Prepare UI for results
+
+    //4) Search for recipes
+    await state.search.getResults();
+
+    // 5) Render results on UI
+    console.log(state.search.result);
+  }
+};
+
+document.querySelector(".search").addEventListener("submit", (e) => {
+  e.preventDefault();
+  controlSearch();
+});
+
+// const search = new Search("pizza");
+// console.log(search);
+
+//---------------------------------
+//---------------------------------
+//---------------------------------
+//---------------------------------
+//---------------------------------
+//---------------------------------
+//---------------------------------
+//---------------------------------
+//---------------------------------
+//---------------------------------
+//---------------------------------
 
 const cartBtn = document.querySelector(".cart__btn");
 const closeCartBtn = document.querySelector(".cart__close");
@@ -331,17 +370,3 @@ document.addEventListener("DOMContentLoaded", () => {
   //     ui.cartLogic();
   //   });
 });
-
-async function getResults(query) {
-  const proxy = "https://cors-anywhere.herokuapp.com/";
-  try {
-    const res = await axios(
-      `${proxy}http://forkify-api.herokuapp.com/api/search?&q=${query}`
-    );
-    const recipes = res.data.recipes;
-    console.log(recipes);
-  } catch (error) {
-    alert(error);
-  }
-}
-getResults("pizza");
