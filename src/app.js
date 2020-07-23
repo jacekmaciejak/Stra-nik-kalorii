@@ -1,11 +1,13 @@
 import "./main.scss";
 import Search from "./js/models/Search";
+import * as searchView from "./js/views/searchView";
+import { elements } from "./js/views/base";
 
 const state = {};
 
 const controlSearch = async () => {
   //1)get query from the view
-  const query = "pizza";
+  const query = searchView.getInput();
 
   if (query) {
     //2) New search object and add to state
@@ -16,11 +18,11 @@ const controlSearch = async () => {
     await state.search.getResults();
 
     // 5) Render results on UI
-    console.log(state.search.result);
+    searchView.renderResults(state.search.result);
   }
 };
 
-document.querySelector(".search").addEventListener("submit", (e) => {
+elements.searchForm.addEventListener("submit", (e) => {
   e.preventDefault();
   controlSearch();
 });

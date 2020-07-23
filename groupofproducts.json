@@ -4,7 +4,7 @@
                 "id": "1"
             },
             "fields": {
-                "title": "warzywa",
+                "title": "pizza",
                 "image": {
                     "fields": {
                         "file": {
@@ -19,7 +19,7 @@
                 "id": "2"
             },
             "fields": {
-                "title": "mięso",
+                "title": "makarony",
                 "image": {
                     "fields": {
                         "file": {

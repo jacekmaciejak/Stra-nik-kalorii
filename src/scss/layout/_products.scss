@@ -1,91 +1,86 @@
 .products {
     padding: 4rem 0;
+    min-height: calc(40vh - 60px);
+    width: 90vw;
+    margin: 0 auto;
+    // max-width: 1200px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-column-gap: 1.5rem;
+    grid-row-gap: 2rem;
 
-    &__title {
-        text-align: center;
-        font-size: 2.5rem;
-        margin-bottom: 5rem;
-        text-transform: capitalize;
-        letter-spacing: $mainSpacing;
-    }
+    .product {
+        font-size: 16px;
+        text-decoration: none;
+        list-style: none;
 
-    &__center {
-        width: 90vw;
-        margin: 0 auto;
-        max-width: 1170px;
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-        grid-column-gap: 1.5rem;
-        grid-row-gap: 2rem;
+        .img__container {
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
 
-        .product {
-            .img__container {
-                position: relative;
-                overflow: hidden;
+            &:hover {
+                .bag__btn {
+                    transform: translateX(0);
+                }
+            }
+
+            &:hover {
+                .product__img {
+                    opacity: 0.5;
+                }
+
+            }
+
+            .product__img {
+                display: block;
+                width: 100%;
+                // min-height: 12rem;
+                height: 8rem;
+                transition: $mainTransition;
+
+            }
+
+            .bag__btn {
+                position: absolute;
+                top: 70%;
+                right: 0;
+                background: $primaryColor;
+                border: none;
+                text-transform: uppercase;
+                padding: 0.5rem 0.75rem;
+                letter-spacing: $mainSpacing;
+                font-weight: bold;
+                transition: $mainTransition;
+                transform: translateX(101%);
                 cursor: pointer;
 
                 &:hover {
-                    .bag__btn {
-                        transform: translateX(0);
-                    }
-
+                    color: $mainWhite;
                 }
 
-                &:hover {
-                    .product__img {
-                        opacity: 0.5;
-                    }
-
+                .fa__shopping-cart {
+                    margin-right: 0.5rem;
                 }
 
-                .product__img {
-                    display: block;
-                    width: 100%;
-                    min-height: 12rem;
-                    transition: $mainTransition;
-                }
-
-                .bag__btn {
-                    position: absolute;
-                    top: 70%;
-                    right: 0;
-                    background: $primaryColor;
-                    border: none;
-                    text-transform: uppercase;
-                    padding: 0.5rem 0.75rem;
-                    letter-spacing: $mainSpacing;
-                    font-weight: bold;
-                    transition: $mainTransition;
-                    transform: translateX(101%);
-                    cursor: pointer;
-
-                    &:hover {
-                        color: $mainWhite;
-                    }
-
-                    .fa__shopping-cart {
-                        margin-right: 0.5rem;
-                    }
-
-                }
             }
-
-            h3 {
-                text-transform: capitalize;
-                font-size: 1.1rem;
-                margin-top: 1rem;
-                letter-spacing: $mainSpacing;
-                text-align: center;
-            }
-
-            h4 {
-                margin-top: 0.7rem;
-                letter-spacing: $mainSpacing;
-                color: $primaryColor;
-                text-align: center;
-            }
-
         }
+
+        h3 {
+            text-transform: capitalize;
+            font-size: 1.1rem;
+            margin-top: 1rem;
+            letter-spacing: $mainSpacing;
+            text-align: center;
+        }
+
+        h4 {
+            margin-top: 0.7rem;
+            letter-spacing: $mainSpacing;
+            color: $primaryColor;
+            text-align: center;
+        }
+
     }
 }
 
