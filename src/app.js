@@ -29,9 +29,19 @@ elements.searchForm.addEventListener("submit", (e) => {
   e.preventDefault();
   controlSearch();
 });
-elements.searchResultPages.addEventListener("click", (e) => {
-  console.log(e.target);
-});
+
+[elements.searchResultPagesLeft, elements.searchResultPagesLeft].forEach(
+  (item) => {
+    item.addEventListener("click", (e) => {
+      const btn = e.target.closest(".btn-inline");
+      if (btn) {
+        const goToPage = parseInt(btn.dataset.goto);
+        searchView.clearResults();
+        searchView.renderResults(state.search.result, goToPage);
+      }
+    });
+  }
+);
 
 // const search = new Search("pizza");
 // console.log(search);
