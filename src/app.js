@@ -29,6 +29,9 @@ elements.searchForm.addEventListener("submit", (e) => {
   e.preventDefault();
   controlSearch();
 });
+elements.searchResultPages.addEventListener("click", (e) => {
+  console.log(e.target);
+});
 
 // const search = new Search("pizza");
 // console.log(search);
