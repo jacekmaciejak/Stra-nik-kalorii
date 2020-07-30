@@ -6,11 +6,10 @@ export const clearInput = () => {
 };
 export const clearResults = () => {
   elements.searchResultList.innerHTML = "";
-  elements.searchResultPagesLeft.innerHTML = "";
-  elements.searchResultPagesRight.innerHTML = "";
+  elements.searchResultButtons.innerHTML = "";
 };
 
-const limitRecipeTitle = (title, limit = 20) => {
+const limitRecipeTitle = (title, limit = 15) => {
   const newTitle = [];
   if (title.length > limit) {
     title.split(" ").reduce((acc, cur) => {
@@ -26,20 +25,18 @@ const limitRecipeTitle = (title, limit = 20) => {
 
 const renderRecipe = (recipe) => {
   const markup = `
-<articel class="product">
-    <a href="#${recipe.recipe_id}" class="results__link">
-    <figure class="results__fig img__container">
-        <img class="product__img" src="${recipe.image_url}" alt="${
-    recipe.title
-  }"/>
-    </figure>
-    <div class="results">
-        <h4 class="results__name">${limitRecipeTitle(recipe.title)}</h4>
-        <p class="results__author">${recipe.publisher}</p>
-    </div>
-    </a>
-</articel>
-`;
+                    <articel class="product">
+                        <a href="#${recipe.recipe_id}" class="product__link">
+                            <figure class="product__container">
+                                <img class="product__img" src="${
+                                  recipe.image_url
+                                }" alt="${recipe.title}"/>
+                            </figure>
+                            <div class="product__text">
+                                <h4>${limitRecipeTitle(recipe.title)}</h4>
+                            </div>
+                        </a>
+                    </articel>`;
   elements.searchResultList.insertAdjacentHTML("beforeend", markup);
 };
 
@@ -47,10 +44,11 @@ const createButton = (page, type) => `
 
                <button class="btn-inline results__btn--${type}" data-goto=${
   type === "prev" ? page - 1 : page + 1
-}>                    <span>Page ${type === "prev" ? page - 1 : page + 1}</span>
+}>
+                  <span>Page ${type === "prev" ? page - 1 : page + 1}</span>
 
                     <svg class="search__icon">
-                        <use href="img/icons.svg#icon-triangle-${
+                        <use href="images/icons.svg#icon-triangle-${
                           type === "prev" ? "left" : "right"
                         }"></use>
                     </svg>
@@ -60,24 +58,23 @@ const createButton = (page, type) => `
 
 const renderButtons = (page, numResults, resPerPage) => {
   const pages = Math.ceil(numResults / resPerPage);
-  let buttonLeft;
-  let buttonRight;
+  let button;
+
   if (page === 1 && pages > 1) {
     //only button to go to the next page
-    buttonRight = createButton(page, "next");
+    // elements.searchResultPagesLeft.style.display = "none";
+    button = createButton(page, "next");
   } else if (page < pages) {
     //Both buttons
-    buttonLeft = createButton(page, "prev");
-    buttonRight = createButton(page, "next");
+    button = `${createButton(page, "prev")}${createButton(page, "next")}`;
   } else if (page === pages && pages > 1) {
     //  only button to go to the previous page
-    buttonLeft = createButton(page, "prev");
+    button = createButton(page, "prev");
   }
-  elements.searchResultPagesLeft.insertAdjacentHTML("afterbegin", buttonLeft);
-  elements.searchResultPagesRight.insertAdjacentHTML("beforeend", buttonRight);
+  elements.searchResultButtons.insertAdjacentHTML("afterbegin", button);
 };
 
-export const renderResults = (recipes, page = 1, resPerPage = 10) => {
+export const renderResults = (recipes, page = 1, resPerPage = 9) => {
   const start = (page - 1) * resPerPage;
   const end = page * resPerPage;
 
