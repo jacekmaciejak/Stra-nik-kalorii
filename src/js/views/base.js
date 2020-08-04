@@ -1,6 +1,7 @@
 export const elements = {
   searchForm: document.querySelector(".search"),
   searchInput: document.querySelector(".search__field"),
+  searchResultContainer: document.querySelector(".products"),
   searchResultList: document.querySelector(".products__list"),
   searchResultButtons: document.querySelector(".products__buttons"),
 };
