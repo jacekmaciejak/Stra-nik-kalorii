@@ -71,32 +71,23 @@ export const renderRecipe = (recipe) => {
                 <ul class="recipe__ingredients-list">
                 ${recipe.ingredients.map((el) => createIngredient(el)).join("")}
                 </ul>
+                <div class="recipe__ingredients-buttons">
+                                <button class="btn-small recipe__btn">
+                                    <svg class="search__icon">
+                                        <use href="images/icons.svg#icon-shopping-cart"></use>
+                                    </svg>
+                                    <span>Add to shopping list</span>
+                                </button>
+                                <a class="btn-small recipe__btn" href="${
+                                  recipe.url
+                                }" target="_blank">
+                                    <span>Directions</span>
+                                    <svg class="search__icon">
+                                        <use href="images/icons.svg#icon-triangle-right"></use>
+                                    </svg>
 
-                <button class="btn-small recipe__btn">
-                    <svg class="search__icon">
-                        <use href="images/icons.svg#icon-shopping-cart"></use>
-                    </svg>
-                    <span>Add to shopping list</span>
-                </button>
-            </div>
-
-            <div class="recipe__directions">
-                <h2 class="heading-2">How to cook it</h2>
-                <p class="recipe__directions-text">
-                    This recipe was carefully designed and tested by
-                    <span class="recipe__by">${
-                      recipe.author
-                    }</span>. Please check out directions at their website.
-                </p>
-                <a class="btn-small recipe__btn" href="${
-                  recipe.url
-                }" target="_blank">
-                    <span>Directions</span>
-                    <svg class="search__icon">
-                        <use href="images/icons.svg#icon-triangle-right"></use>
-                    </svg>
-
-                </a>
+                                </a>
+                </div>
             </div>
 `;
   elements.recipe.insertAdjacentHTML("afterbegin", markup);

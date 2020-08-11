@@ -175,6 +175,12 @@
             margin-bottom: 3rem;
         }
 
+        &-buttons {
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+        }
+
 
     }
 
@@ -262,7 +268,7 @@
 
     .btn {
         padding: 1.3rem 3rem;
-        font-size: 1.4rem;
+        font-size: 1rem;
     }
 
     .btn svg {
@@ -274,8 +280,8 @@
     .btn-small,
     .btn-small:link,
     .btn-small:visited {
-        font-size: 1.3rem;
-        padding: 1rem 1.75rem;
+        font-size: 1rem;
+        padding: .6rem 1.3rem;
         text-decoration: none;
     }
 
