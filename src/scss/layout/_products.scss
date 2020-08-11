@@ -1,8 +1,8 @@
 .container {
     max-width: 95vw;
     // min-height: calc(60vh - 60px);
-    height: calc(60vh - 60px);
-    margin: 30px auto;
+    height: calc(70vh - 60px);
+    margin: 15px auto;
     display: grid;
     grid-template-columns: 1fr 2fr;
     grid-template-areas: "list recipe";
@@ -11,7 +11,7 @@
     .products {
         border: 3px solid greenyellow;
         display: grid;
-        align-content: center;
+        align-content: start;
         width: 100%;
         height: 100%;
 

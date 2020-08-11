@@ -1,5 +1,5 @@
 .banner__img {
-    min-height: calc(40vh - 60px);
+    min-height: calc(30vh - 60px);
     background: url("../images/hero-bcg.jpg") center/cover no-repeat;
     display: flex;
     align-items: center;
@@ -8,11 +8,11 @@
     .banner {
         width: 90vw;
         margin: 0 auto;
-        max-width: 1200px;
+        // max-width: 1200px;
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
         grid-column-gap: 1.5rem;
-        grid-row-gap: 2rem;
+        // grid-row-gap: 2rem;
 
         .product {
 
@@ -20,7 +20,8 @@
                 position: relative;
                 overflow: hidden;
                 cursor: pointer;
-                border: 2px solid #fff;
+                display: flex;
+                justify-content: center;
 
                 &:hover {
                     .bag__btn {
@@ -36,9 +37,10 @@
 
                 .product__img {
                     display: block;
-                    width: 100%;
-                    min-height: 12rem;
+                    height: 8rem;
                     transition: $mainTransition;
+                    border: 2px solid #fff;
+
                 }
 
             }
