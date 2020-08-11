@@ -8,8 +8,9 @@ import { elements, renderLoader, clearLoader } from "./js/views/base";
 const state = {};
 
 /**
- *
+ ****************
  *SEARCH CONTROLLER
+ ****************
  */
 
 const controlSearch = async () => {

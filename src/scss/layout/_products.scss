@@ -9,7 +9,6 @@
 
 
     .products {
-        border: 3px solid greenyellow;
         display: grid;
         align-content: start;
         width: 100%;
@@ -161,7 +160,4 @@
         }
     }
 
-    .recipe {
-        border: 1px solid red;
-    }
 }

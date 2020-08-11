@@ -44,7 +44,7 @@
             span {
                 -webkit-box-decoration-break: clone;
                 box-decoration-break: clone;
-                padding: 1.3rem 2rem;
+                padding: 1rem 1.8rem;
                 background-image: linear-gradient(to right bottom, #fbdb89, #f48982);
             }
         }
@@ -53,17 +53,13 @@
     &__details {
         display: flex;
         align-items: center;
-        padding: 0 3rem;
+        justify-content: space-between;
+        padding: .5rem 3rem;
 
         &-info {
-            font-size: 1.5rem;
             text-transform: uppercase;
             display: flex;
             align-items: center;
-
-            &:not(:last-child) {
-                margin-right: 4rem;
-            }
 
             .recipe__info-icon {
                 height: 2rem;
@@ -84,6 +80,12 @@
                 opacity: 0;
                 transform: translateY(5px);
                 transition: all 0.4s;
+
+                &:hover {
+                    visibility: visible;
+                    opacity: 1;
+                    transform: translateY(0);
+                }
 
                 .btn-tiny {
                     height: 1.75rem;
@@ -117,6 +119,12 @@
                 .btn-tiny:not(:last-child) {
                     margin-right: 0.3rem;
                 }
+
+                // .recipe:hover .recipe__info-buttons {
+                //     visibility: visible;
+                //     opacity: 1;
+                //     transform: translateY(0);
+                // }
             }
         }
 
@@ -125,9 +133,8 @@
             border-radius: 50%;
             border: none;
             cursor: pointer;
-            height: 4.5rem;
-            width: 4.5rem;
-            margin-left: auto;
+            height: 3.5rem;
+            width: 3.5rem;
             transition: all 0.2s;
             display: flex;
             align-items: center;
@@ -151,11 +158,7 @@
 
     }
 
-    .recipe:hover .recipe__info-buttons {
-        visibility: visible;
-        opacity: 1;
-        transform: translateY(0);
-    }
+
 
     &__ingredients {
         padding: 4rem 5rem;
@@ -186,6 +189,7 @@
 
     &__item {
         display: flex;
+        align-items: center;
     }
 
     &__icon {
