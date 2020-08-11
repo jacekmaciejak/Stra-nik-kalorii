@@ -9,6 +9,16 @@ export const clearResults = () => {
   elements.searchResultButtons.innerHTML = "";
 };
 
+export const highlightSelected = (id) => {
+  const resultArr = Array.from(document.querySelectorAll('.product__link'))
+resultArr.forEach(el=>{
+  el.classList.remove('product__link--active')
+})
+  document
+    .querySelector(`a[href="#${id}"]`)
+    .classList.add("product__link--active");
+};
+
 const limitRecipeTitle = (title, limit = 15) => {
   const newTitle = [];
   if (title.length > limit) {

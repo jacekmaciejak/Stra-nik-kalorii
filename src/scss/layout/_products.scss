@@ -42,9 +42,9 @@
                     text-decoration: none;
                     border: 2px solid transparent;
 
-                    &:focus {
-                        border: 2px solid red;
-                    }
+                    // &:focus {
+                    //     border: 2px solid red;
+                    // }
                 }
 
                 &__container {
@@ -158,6 +158,10 @@
                 float: right;
             }
         }
+    }
+
+    .product__link--active {
+        background-color: red;
     }
 
 }
