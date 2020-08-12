@@ -1,6 +1,7 @@
 import "./main.scss";
 import Search from "./js/models/Search";
 import Recipe from "./js/models/Recipe";
+import List from "./js/models/List";
 import * as searchView from "./js/views/searchView";
 import * as recipeView from "./js/views/recipeView";
 import { elements, renderLoader, clearLoader } from "./js/views/base";
@@ -121,8 +122,10 @@ elements.recipe.addEventListener("click", (e) => {
     state.recipe.updateServings("inc");
     recipeView.updateServingsIngredients(state.recipe);
   }
-  console.log(state.recipe);
+  // console.log(state.recipe);
 });
+
+window.l = new List();
 
 // const search = new Search("pizza");
 // console.log(search);

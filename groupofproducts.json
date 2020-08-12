@@ -19,7 +19,7 @@
                 "id": "2"
             },
             "fields": {
-                "title": "makarony",
+                "title": "spaghetti",
                 "image": {
                     "fields": {
                         "file": {
@@ -34,7 +34,7 @@
                 "id": "3"
             },
             "fields": {
-                "title": "nabiał",
+                "title": "salad",
                 "image": {
                     "fields": {
                         "file": {
@@ -49,7 +49,7 @@
                 "id": "4"
             },
             "fields": {
-                "title": "napoje",
+                "title": "hamburger",
                 "image": {
                     "fields": {
                         "file": {

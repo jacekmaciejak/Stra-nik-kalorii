@@ -4,7 +4,7 @@
     height: 100%;
 
     &__fig {
-        height: 15rem;
+        height: 12rem;
         position: relative;
 
         // transform: scale(1.04) translateY(-1px);
@@ -154,16 +154,12 @@
                 fill: #fff;
             }
         }
-
-
     }
 
-
-
     &__ingredients {
-        padding: 4rem 5rem;
+        padding: 1rem 1rem;
         font-size: 1rem;
-        line-height: 1.2;
+        // line-height: 1.2;
         background-color: #f2efee;
         display: flex;
         flex-direction: column;
@@ -171,11 +167,11 @@
 
         &-list {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1fr 1fr 1fr;
             grid-column-gap: 1.5rem;
             grid-row-gap: 1rem;
             list-style: none;
-            margin-bottom: 3rem;
+            margin-bottom: 2rem;
         }
 
         &-buttons {
