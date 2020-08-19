@@ -6,6 +6,11 @@ export const elements = {
   searchResultButtons: document.querySelector(".products__buttons"),
   recipe: document.querySelector(".recipe"),
   cartContent: document.querySelector(".cart__content"),
+  cartDOM: document.querySelector(".cart__wrapper"),
+  cartOverlay: document.querySelector(".cart"),
+  cartBtn: document.querySelector(".cart__btn"),
+  closeCartBtn: document.querySelector(".cart__close"),
+  clearCartBtn: document.querySelector(".clear__cart"),
 };
 
 export const elementStrings = {

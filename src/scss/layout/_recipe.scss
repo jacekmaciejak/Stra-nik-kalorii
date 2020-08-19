@@ -3,6 +3,12 @@
     border-top: 1px solid #fff;
     height: 100%;
 
+    &:hover .recipe__info-buttons {
+        visibility: visible;
+        opacity: 1;
+        transform: translateY(0);
+    }
+
     &__fig {
         height: 12rem;
         position: relative;
@@ -76,16 +82,10 @@
             .recipe__info-buttons {
                 display: flex;
                 margin-left: 1.5rem;
-                // visibility: hidden;
+                visibility: hidden;
                 opacity: 0;
                 transform: translateY(5px);
                 transition: all 0.4s;
-
-                &:hover {
-                    visibility: visible;
-                    opacity: 1;
-                    transform: translateY(0);
-                }
 
                 .btn-tiny {
                     height: 1.75rem;
@@ -119,13 +119,9 @@
                 .btn-tiny:not(:last-child) {
                     margin-right: 0.3rem;
                 }
-
-                // .recipe:hover .recipe__info-buttons {
-                //     visibility: visible;
-                //     opacity: 1;
-                //     transform: translateY(0);
-                // }
             }
+
+
         }
 
         &-love {
@@ -179,13 +175,11 @@
             display: flex;
             justify-content: space-around;
         }
-
-
     }
 
     &__item {
         display: flex;
-        align-items: center;
+        // align-items: center;
     }
 
     &__icon {

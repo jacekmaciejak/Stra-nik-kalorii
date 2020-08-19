@@ -5,14 +5,18 @@ import List from "./js/models/List";
 import * as searchView from "./js/views/searchView";
 import * as recipeView from "./js/views/recipeView";
 import * as listView from "./js/views/listView";
+import * as list from "./js/models/List";
 import { elements, renderLoader, clearLoader } from "./js/views/base";
 
 const state = {};
+window.state = state;
 
 /**
- ****************
- *SEARCH CONTROLLER
- ****************
+ ************************************
+ ************************************
+ *********SEARCH CONTROLLER**********
+ ************************************
+ ************************************
  */
 
 const controlSearch = async () => {
@@ -65,15 +69,16 @@ elements.searchResultButtons.addEventListener("click", (e) => {
 });
 
 /**
- ****************
- *RECIPE CONTROLLER
- ****************
+ ********************************
+ ********************************
+ *******RECIPE CONTROLLER********
+ ********************************
+ ********************************
  */
 
 const controlRecipe = async () => {
   //Get ID from url
   const id = window.location.hash.replace("#", "");
-  console.log(id);
 
   if (id) {
     //Prepare UI for changes
@@ -110,9 +115,12 @@ const controlRecipe = async () => {
 // window.addEventListener("hashchange", controlRecipe);
 // window.addEventListener("load", controlRecipe);
 
-/************************
- *CART CONTROLLER
- ************************/
+/****************************************
+ ****************************************
+ *************CART CONTROLLER************
+ ****************************************
+ ****************************************
+ */
 
 const controlList = () => {
   //Create a new list if there is none yet
@@ -123,6 +131,25 @@ const controlList = () => {
     listView.renderItem(item);
   });
 };
+//Show list of products
+elements.cartBtn.addEventListener("click", list.showCart);
+
+//Hide list of products
+elements.closeCartBtn.addEventListener("click", list.hideCart);
+
+//Handle delete and update list item events
+elements.cartContent.addEventListener("click", (e) => {
+  const id = e.target.closest(".shopping__item").dataset.itemid;
+  console.log(id);
+
+  //Handle the delete button
+  if (e.target.matches(".shopping__delete, .shopping__delete *")) {
+    //Delete from state
+    state.list.deleteItem(id);
+    //Delete from UI
+    listView.deleteItem(id);
+  }
+});
 
 //Handling recipe button clicks
 elements.recipe.addEventListener("click", (e) => {
@@ -139,7 +166,6 @@ elements.recipe.addEventListener("click", (e) => {
   } else if (e.target.matches(".recipe__btn--add,.recipe__btn--add *")) {
     controlList();
   }
-  // console.log(state.recipe);
 });
 
 window.l = new List();
@@ -159,11 +185,11 @@ window.l = new List();
 //---------------------------------
 //---------------------------------
 
-const cartBtn = document.querySelector(".cart__btn");
-const closeCartBtn = document.querySelector(".cart__close");
-const clearCartBtn = document.querySelector(".clear__cart");
-const cartDOM = document.querySelector(".cart__wrapper");
-const cartOverlay = document.querySelector(".cart");
+// const cartBtn = document.querySelector(".cart__btn");
+// const closeCartBtn = document.querySelector(".cart__close");
+// const cartDOM = document.querySelector(".cart__wrapper");
+// const cartOverlay = document.querySelector(".cart");
+// const clearCartBtn = document.querySelector(".clear__cart");
 const cartItems = document.querySelector(".cart__items");
 const cartTotal = document.querySelector(".cart__total");
 const cartContent = document.querySelector(".cart__content");
@@ -195,42 +221,7 @@ class listOfProducts {
     }
   }
 }
-class Products {
-  async getProducts() {
-    try {
-      let result = await fetch("products.json");
-      let data = await result.json();
-      let products = data.items;
-      products = products.map((item) => {
-        const { title, calories } = item.fields;
-        const { id } = item.sys;
-        const image = item.fields.image.fields.file.url;
-        return { title, calories, id, image };
-      });
-      return products;
-    } catch (error) {
-      console.log(error);
-    }
-  }
-}
-class Meat {
-  async getMeat() {
-    try {
-      let result = await fetch("meat.json");
-      let data = await result.json();
-      let meat = data.items;
-      meat = meat.map((item) => {
-        const { title, calories } = item.fields;
-        const { id } = item.sys;
-        const image = item.fields.image.fields.file.url;
-        return { title, calories, id, image };
-      });
-      return meat;
-    } catch (error) {
-      console.log(error);
-    }
-  }
-}
+
 //DISPLAY ALL MEALS
 class UI {
   displayListOfProducts(products) {
@@ -246,92 +237,6 @@ class UI {
         `;
     });
     headerBannerDOM.innerHTML = result;
-  }
-  displayProducts(products) {
-    let result = "";
-    products.forEach((product) => {
-      result += `
-            <article class="product">
-                <div class="img__container">
-                    <img src=${product.image} alt="product image" class="product__img">
-                    <button class="bag__btn" data-id=${product.id}>
-                        <i class="fas fa__shopping-cart"></i>
-                        dodaj do listy
-                    </button>
-                </div>
-                <h3>${product.title}</h3>
-                <h4>${product.calories} kcal</h4>
-            </article>
-        `;
-    });
-    productsDOM.innerHTML = result;
-  }
-
-  displayMeat(meat) {
-    let result = "";
-    meat.forEach((meat) => {
-      result += `
-            <article class="product">
-                <div class="img__container">
-                    <img src=${meat.image} alt="product image" class="product__img">
-                    <button class="bag__btn" data-id=${meat.id}>
-                        <i class="fas fa__shopping-cart"></i>
-                        dodaj do listy
-                    </button>
-                </div>
-                <h3>${meat.title}</h3>
-                <h4>${meat.calories} kcal</h4>
-            </article>
-        `;
-    });
-    productsDOM.innerHTML = result;
-  }
-  //funkcja pobierajaca przycisk z kart, musimy ja dodac po wczystaniu kart
-  getBagButtons() {
-    const buttons = [...document.querySelectorAll(".bag__btn")];
-    buttonsDOM = buttons;
-    buttons.forEach((button) => {
-      let id = button.dataset.id;
-      let inCard = cart.find((item) => item.id === id);
-      if (inCard) {
-        button.innerText = "Dodano do koszyka";
-        button.disabled = true;
-      }
-      button.addEventListener("click", (e) => {
-        e.target.innerText = "Dodano do koszyka";
-        e.target.disabled = true;
-        //get product from products
-        let cartItem = { ...Storage.getProduct(id), amount: 1 };
-        //add product to the cart
-        cart = [...cart, cartItem];
-        //save cart in local storage
-        Storage.saveCart(cart);
-        //set cart values
-        this.setCartValues(cart);
-        //display cart item
-        this.addCartItem(cartItem);
-        //show the cart
-        this.showCart();
-      });
-    });
-  }
-  //funkcja wyswietlajaca produkty po wybraniu grupy produktó
-  showProducts() {
-    const productsList = [...document.querySelectorAll(".mainProduct")];
-    mainProducts = productsList;
-    productsList.forEach((product) => {
-      let id = product.dataset.id;
-      product.addEventListener("click", (e) => {
-        e.preventDefault();
-        // console.log(id);
-        if (id === "1") {
-          this.displayMeat(Meat);
-          console.log("1");
-        } else if (id === "2") {
-          console.log("2");
-        }
-      });
-    });
   }
 
   setCartValues(cart) {
@@ -351,7 +256,6 @@ class UI {
                     <div>
                         <h4>${item.title}</h4>
                         <h5>${item.calories}</h5>
-                        <span class="remove__item" data-id=${item.id}>remove</span>
                     </div>
                     <div>
                         <i class="fas fa-chevron-up" data-id=${item.id}></i>
@@ -360,24 +264,24 @@ class UI {
                     </div>`;
     cartContent.appendChild(div);
   }
-  showCart() {
-    cartOverlay.classList.add("transparentBcg");
-    cartDOM.classList.add("showCart");
-  }
+  // showCart() {
+  //   cartOverlay.classList.add("transparentBcg");
+  //   cartDOM.classList.add("showCart");
+  // }
   setupAPP() {
     cart = Storage.getCart();
     this.setCartValues(cart);
     this.populateCart(cart);
-    cartBtn.addEventListener("click", this.showCart);
-    closeCartBtn.addEventListener("click", this.hideCart);
+    // cartBtn.addEventListener("click", this.showCart);
+    // closeCartBtn.addEventListener("click", this.hideCart);
   }
   populateCart(cart) {
     cart.forEach((item) => this.addCartItem(item));
   }
-  hideCart() {
-    cartOverlay.classList.remove("transparentBcg");
-    cartDOM.classList.remove("showCart");
-  }
+  // hideCart() {
+  //   cartOverlay.classList.remove("transparentBcg");
+  //   cartDOM.classList.remove("showCart");
+  // }
   cartLogic() {
     //clear cart button
     clearCartBtn.addEventListener("click", () => {
@@ -467,25 +371,4 @@ document.addEventListener("DOMContentLoaded", () => {
   listofproducts.getListOfProducts().then((products) => {
     ui.displayListOfProducts(products);
   });
-  // products
-  //   .getProducts()
-  //   .then((products) => {
-  //     ui.displayProducts(products);
-  //     Storage.saveProducts(products);
-  //     ui.showProducts();
-  //   })
-  //   .then(() => {
-  //     ui.getBagButtons();
-  //     ui.cartLogic();
-  //   });
-  // meat
-  //   .getMeat()
-  //   .then((meat) => {
-  //     ui.displayMeat(meat);
-  //     Storage.saveMeat(meat);
-  //   })
-  //   .then(() => {
-  //     ui.getBagButtons();
-  //     ui.cartLogic();
-  //   });
 });

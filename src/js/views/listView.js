@@ -4,11 +4,14 @@ export const renderItem = (item) => {
   const markup = `
                 <li class="shopping__item data-itemid=${item.id}">
                     <div class="shopping__count">
+                        <i class="fas fa-chevron-up" data-id=${item.id}></i>
                         <input type="number" value="${item.count}" step="${item.count}" class="shopping__count-value">
                         <p>${item.unit}</p>
+                        <i class="fas fa-chevron-down" data-id=${item.id}></i>
+
                     </div>
                     <p class="shopping__description">${item.ingredient}</p>
-                    <button class="shopping__delete">
+                    <button class="shopping__delete btn-tiny ">
                         <svg>
                             <use href="images/icons.svg#icon-circle-with-cross"></use>
                         </svg>
@@ -21,8 +24,15 @@ export const renderItem = (item) => {
 
 export const deleteItem = (id) => {
   const item = document.querySelector(`[data-itemid="${id}"]`);
-  item.parentElement.removeChild(item);
+  if (item) item.parentElement.removeChild(item);
 };
+// export const clearCart = () => {
+//   let cartItems = cart.map((item) => item.id); //pobieramy id
+//   cartItems.forEach((id) => this.removeItem(id));
+//   while (cartContent.children.length > 0) {
+//     cartContent.removeChild(cartContent.children[0]);
+//   }
+// };
 
 /* <img src= ${item.image} alt="product" >
     <div>

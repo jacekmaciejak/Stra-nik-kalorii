@@ -2,6 +2,7 @@
 # dependencies
 /node_modules/
 /stare_json/
+support.js
 
 
 

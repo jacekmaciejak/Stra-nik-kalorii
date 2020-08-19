@@ -9,10 +9,12 @@
 
 
     .products {
-        display: grid;
-        // align-content: start;
         width: 100%;
         height: 100%;
+        display: grid;
+        grid-template-rows: 9fr 1fr;
+        // align-content: start;
+
 
         &__list {
             display: grid;
