@@ -41,7 +41,7 @@ const createIngredient = (ingredient) => `
                     </li>
 `;
 
-export const renderRecipe = (recipe) => {
+export const renderRecipe = (recipe,isLiked) => {
   const markup = `
           <figure class="recipe__fig">
                 <img src="${recipe.img}" alt="${
@@ -84,9 +84,9 @@ export const renderRecipe = (recipe) => {
                     </div>
 
                 </div>
-                <button class="recipe__details-love">
+                <button class="recipe__love recipe__details-love">
                     <svg class="header__likes">
-                        <use href="images/icons.svg#icon-heart-outlined"></use>
+                        <use href="images/icons.svg#icon-heart${isLiked ? '' :'-outlined'}"></use>
                     </svg>
                 </button>
             </div>
@@ -96,13 +96,13 @@ export const renderRecipe = (recipe) => {
                 ${recipe.ingredients.map((el) => createIngredient(el)).join("")}
                 </ul>
                 <div class="recipe__ingredients-buttons">
-                                <button class="btn-small recipe__btn recipe__btn--add">
+                                <button class="btn-small recipe__btn recipe__btn--add bubbly-button">
                                     <svg class="search__icon">
                                         <use href="images/icons.svg#icon-shopping-cart"></use>
                                     </svg>
                                     <span>Add to shopping list</span>
                                 </button>
-                                <a class="btn-small recipe__btn" href="${
+                                <a class="btn-small recipe__btn bubbly-button" href="${
                                   recipe.url
                                 }" target="_blank">
                                     <span>Directions</span>

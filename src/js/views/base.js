@@ -11,6 +11,8 @@ export const elements = {
   cartBtn: document.querySelector(".cart__btn"),
   closeCartBtn: document.querySelector(".cart__close"),
   clearCartBtn: document.querySelector(".clear__cart"),
+  likesMenu: document.querySelector(".likes__field"),
+  likesList: document.querySelector(".likes__list"),
 };
 
 export const elementStrings = {
