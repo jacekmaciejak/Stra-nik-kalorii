@@ -26,7 +26,9 @@ export const renderLike = (like) => {
                                     <p class="likes__author">${like.author}</p>
                                 </div>
                             </a>
+
                         </li>
+
 `;
   elements.likesList.insertAdjacentHTML("beforeend", markup);
 };

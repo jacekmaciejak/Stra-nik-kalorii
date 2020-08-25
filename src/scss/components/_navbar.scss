@@ -68,10 +68,10 @@
          .likes__panel {
              position: absolute;
              right: 0;
-             top: 10rem;
+             top: 60px;
              z-index: 10;
-             padding: 2rem 0;
-             width: 34rem;
+             padding: 1rem 0;
+             width: 25rem;
              background-color: #fff;
              box-shadow: 0 0.8rem 5rem 2rem rgba(101, 90, 86, 0.1);
              visibility: hidden;
@@ -95,7 +95,7 @@
          .likes__link:visited {
              display: flex;
              align-items: center;
-             padding: 1.5rem 3rem;
+             padding: 1rem 1rem;
              transition: all .3s;
              border-right: 1px solid #fff;
              text-decoration: none;
@@ -147,7 +147,7 @@
 
          .results__name,
          .likes__name {
-             font-size: 1.3rem;
+             font-size: 1rem;
              color: #F59A83;
              text-transform: uppercase;
              font-weight: 600;
@@ -156,7 +156,7 @@
 
          .results__author,
          .likes__author {
-             font-size: 1.1rem;
+             font-size: 1rem;
              color: #968B87;
              text-transform: uppercase;
              font-weight: 600;
