@@ -14,14 +14,29 @@ export default class List {
       ingredient,
     };
     this.items.push(item);
+    //Persist data in localStorage
+    this.persistDataList();
     return item;
   }
   deleteItem(id) {
     const index = this.items.findIndex((el) => el.id === id);
     this.items.splice(index, 1);
+    //Persist data in localStorage
+    this.persistDataList();
   }
   updateCount(id, newCount) {
     this.items.find((el) => el.id === id).count = newCount;
+  }
+  getNumItems() {
+    return this.items.length;
+  }
+  persistDataList() {
+    localStorage.setItem("items", JSON.stringify(this.items));
+  }
+  readStorageList() {
+    const storage = JSON.parse(localStorage.getItem("items"));
+    //Restore likes from the localStorage
+    if (storage) this.items = storage;
   }
 }
 export const showCart = () => {

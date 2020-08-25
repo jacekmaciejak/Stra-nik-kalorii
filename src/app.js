@@ -11,7 +11,7 @@ import * as list from "./js/models/List";
 import { elements, renderLoader, clearLoader } from "./js/views/base";
 
 const state = {};
-window.state = state;
+// window.state = state;
 
 /**
  ************************************
@@ -204,13 +204,16 @@ const controlLike = () => {
 //Restore liked recipes on page load
 window.addEventListener("load", () => {
   state.likes = new Likes();
-  //Restore likes
-  state.likes.readStorage();
+  state.items = new List();
+  //Restore likes,list items
+  state.likes.readStorageLikes();
+  state.items.readStorageList();
   //Toggle like menu button
   likesView.toggleLikeMenu(state.likes.getNumLikes());
 
   //Render the existing likes
   state.likes.likes.forEach((like) => likesView.renderLike(like));
+  state.items.items.forEach((item) => listView.renderItem(item));
 });
 
 //Handling recipe button clicks
@@ -234,7 +237,7 @@ elements.recipe.addEventListener("click", (e) => {
   }
 });
 
-window.l = new List();
+// window.l = new List();
 
 // const search = new Search("pizza");
 // console.log(search);
