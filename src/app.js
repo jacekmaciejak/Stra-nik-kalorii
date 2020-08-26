@@ -3,11 +3,13 @@ import Search from "./js/models/Search";
 import Recipe from "./js/models/Recipe";
 import List from "./js/models/List";
 import Likes from "./js/models/Likes";
+import Menu from "./js/models/Menu";
 import * as searchView from "./js/views/searchView";
 import * as recipeView from "./js/views/recipeView";
 import * as listView from "./js/views/listView";
 import * as likesView from "./js/views/likesView";
 import * as list from "./js/models/List";
+import * as menuView from "./js/views/menuView";
 import { elements, renderLoader, clearLoader } from "./js/views/base";
 
 const state = {};
@@ -149,7 +151,7 @@ elements.cartContent.addEventListener("click", (e) => {
   //Handle the delete button
   if (e.target.matches(".shopping__delete, .shopping__delete *")) {
     //Delete from state
-    state.list.deleteItem(id);
+    state.items.deleteItem(id); //list
     //Delete from UI
     listView.deleteItem(id);
     //Handle the count update
@@ -157,6 +159,9 @@ elements.cartContent.addEventListener("click", (e) => {
     const val = parseFloat(e.target.value, 10);
     state.list.updateCount(id, val);
   }
+});
+elements.clearCartBtn.addEventListener("click", (e) => {
+  state.items.deleteAllItems;
 });
 
 /****************************************
@@ -286,7 +291,7 @@ const cartItems = document.querySelector(".cart__items");
 const cartTotal = document.querySelector(".cart__total");
 const cartContent = document.querySelector(".cart__content");
 const productsDOM = document.querySelector(".products__center");
-const headerBannerDOM = document.querySelector(".banner");
+// const headerBannerDOM = document.querySelector(".banner");
 //CART
 let cart = [];
 //List of products
@@ -294,43 +299,8 @@ let mainProducts = [];
 //buttons
 let buttonsDOM = [];
 
-//GETTING THE PRODUCTS
-class listOfProducts {
-  async getListOfProducts() {
-    try {
-      let result = await fetch("groupofproducts.json");
-      let data = await result.json();
-      let products = data.items;
-      products = products.map((item) => {
-        const { title } = item.fields;
-        const { id } = item.sys;
-        const image = item.fields.image.fields.file.url;
-        return { title, id, image };
-      });
-      return products;
-    } catch (error) {
-      console.log(error);
-    }
-  }
-}
-
-//DISPLAY ALL MEALS
+//DISPLAY GROUP OF MENU
 class UI {
-  displayListOfProducts(products) {
-    let result = "";
-    products.forEach((product) => {
-      result += `
-            <article class="product mainProduct" data-id=${product.id}>
-                <div class="img__container">
-                    <img src=${product.image} alt="product image" class="product__img">
-                </div>
-                <h3>${product.title}</h3>
-            </article>
-        `;
-    });
-    headerBannerDOM.innerHTML = result;
-  }
-
   setCartValues(cart) {
     let tempTotal = 0;
     let itemsTotal = 0;
@@ -356,10 +326,7 @@ class UI {
                     </div>`;
     cartContent.appendChild(div);
   }
-  // showCart() {
-  //   cartOverlay.classList.add("transparentBcg");
-  //   cartDOM.classList.add("showCart");
-  // }
+
   setupAPP() {
     cart = Storage.getCart();
     this.setCartValues(cart);
@@ -454,13 +421,13 @@ class Storage {
 //wywolanie funkcji przy ładowaniu strony
 document.addEventListener("DOMContentLoaded", () => {
   const ui = new UI();
-  const listofproducts = new listOfProducts();
+  const listofproducts = new Menu();
   // const products = new Products();
   // const meat = new Meat();
   //SETUP APP
   ui.setupAPP();
   //GET ALL PRODUCTS
   listofproducts.getListOfProducts().then((products) => {
-    ui.displayListOfProducts(products);
+    menuView.displayListOfProducts(products);
   });
 });

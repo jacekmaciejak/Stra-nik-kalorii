@@ -13,6 +13,7 @@ export const elements = {
   clearCartBtn: document.querySelector(".clear__cart"),
   likesMenu: document.querySelector(".likes__field"),
   likesList: document.querySelector(".likes__list"),
+  headerBannerDOM: document.querySelector(".banner"),
 };
 
 export const elementStrings = {

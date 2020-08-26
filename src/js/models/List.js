@@ -38,6 +38,10 @@ export default class List {
     //Restore likes from the localStorage
     if (storage) this.items = storage;
   }
+  deleteAllItems() {
+    this.items = [];
+    this.persistDataList();
+  }
 }
 export const showCart = () => {
   elements.cartOverlay.classList.add("transparentBcg");
