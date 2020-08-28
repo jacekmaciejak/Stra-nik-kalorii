@@ -1,5 +1,6 @@
 .banner__img {
-    min-height: calc(30vh - 60px);
+    font-size: 13px;
+    min-height: calc(25vh - 60px);
     background: url("../images/hero-bcg.jpg") center/cover no-repeat;
     display: flex;
     align-items: center;
@@ -10,7 +11,7 @@
         margin: 0 auto;
         // max-width: 1200px;
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(5rem, 1fr));
         grid-column-gap: 1.5rem;
         // grid-row-gap: 2rem;
 
@@ -37,7 +38,7 @@
 
                 .product__img {
                     display: block;
-                    height: 8rem;
+                    // height: 8rem;
                     transition: $mainTransition;
                     border: 2px solid #fff;
 

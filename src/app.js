@@ -63,14 +63,20 @@ elements.searchForm.addEventListener("submit", (e) => {
 //   controlSearch();
 // });
 
-// elements.searchResultButtons.addEventListener("click", (e) => {
-//   const btn = e.target.closest(".btn-inline");
-//   if (btn) {
-//     const goToPage = parseInt(btn.dataset.goto);
-//     searchView.clearResults();
-//     searchView.renderResults(state.search.result, goToPage);
-//   }
-// });
+//---------------------------
+//---------------------------
+//------PRODUCTS BUTTONS-----
+//---------------------------
+//---------------------------
+
+elements.searchResultButtons.addEventListener("click", (e) => {
+  const btn = e.target.closest(".btn-inline");
+  if (btn) {
+    const goToPage = parseInt(btn.dataset.goto);
+    searchView.clearResults();
+    searchView.renderResults(state.search.result, goToPage);
+  }
+});
 
 /**
  ************************************
@@ -115,6 +121,22 @@ elements.menuList.addEventListener("click", (e) => {
     controlMenu("salad");
   } else if (id == 4) {
     controlMenu("hamburger");
+  } else if (id == 5) {
+    controlMenu("steak");
+  } else if (id == 6) {
+    controlMenu("popcorn");
+  } else if (id == 7) {
+    controlMenu("lobster");
+  } else if (id == 8) {
+    controlMenu("pudding");
+  } else if (id == 9) {
+    controlMenu("pie");
+  } else if (id == 10) {
+    controlMenu("seafood");
+  } else if (id == 11) {
+    controlMenu("chicken");
+  } else if (id == 12) {
+    controlMenu("lasagna");
   }
 });
 

@@ -8,7 +8,7 @@
                 "image": {
                     "fields": {
                         "file": {
-                            "url": "./images/product-12.jpg"
+                            "url": "./images/pizza.jpg"
                         }
                     }
                 }
@@ -23,7 +23,7 @@
                 "image": {
                     "fields": {
                         "file": {
-                            "url": "./images/product-10.jpg"
+                            "url": "./images/pasta.jpg"
                         }
                     }
                 }
@@ -38,7 +38,7 @@
                 "image": {
                     "fields": {
                         "file": {
-                            "url": "./images/product-9.jpg"
+                            "url": "./images/salad.jpg"
                         }
                     }
                 }
@@ -53,7 +53,119 @@
                 "image": {
                     "fields": {
                         "file": {
-                            "url": "./images/product-11.jpg"
+                            "url": "./images/hamburger.jpg"
+                        }
+                    }
+                }
+            }
+        }, {
+            "sys": {
+                "id": "5"
+            },
+            "fields": {
+                "title": "steak",
+                "image": {
+                    "fields": {
+                        "file": {
+                            "url": "./images/steak.jpg"
+                        }
+                    }
+                }
+            }
+        }, {
+            "sys": {
+                "id": "6"
+            },
+            "fields": {
+                "title": "popcorn",
+                "image": {
+                    "fields": {
+                        "file": {
+                            "url": "./images/popcorn.jpg"
+                        }
+                    }
+                }
+            }
+        }, {
+            "sys": {
+                "id": "7"
+            },
+            "fields": {
+                "title": "lobster",
+                "image": {
+                    "fields": {
+                        "file": {
+                            "url": "./images/lobster.jpg"
+                        }
+                    }
+                }
+            }
+        }, {
+            "sys": {
+                "id": "8"
+            },
+            "fields": {
+                "title": "pudding",
+                "image": {
+                    "fields": {
+                        "file": {
+                            "url": "./images/pudding.jpg"
+                        }
+                    }
+                }
+            }
+        }, {
+            "sys": {
+                "id": "9"
+            },
+            "fields": {
+                "title": "pie",
+                "image": {
+                    "fields": {
+                        "file": {
+                            "url": "./images/pie.jpg"
+                        }
+                    }
+                }
+            }
+        }, {
+            "sys": {
+                "id": "10"
+            },
+            "fields": {
+                "title": "seafood",
+                "image": {
+                    "fields": {
+                        "file": {
+                            "url": "./images/seafood.jpg"
+                        }
+                    }
+                }
+            }
+        }, {
+            "sys": {
+                "id": "11"
+            },
+            "fields": {
+                "title": "chicken",
+                "image": {
+                    "fields": {
+                        "file": {
+                            "url": "./images/chicken.jpg"
+                        }
+                    }
+                }
+            }
+        }, {
+            "sys": {
+                "id": "12"
+            },
+            "fields": {
+                "title": "lasagna",
+                "image": {
+                    "fields": {
+                        "file": {
+                            "url": "./images/lasagna.jpg"
                         }
                     }
                 }
