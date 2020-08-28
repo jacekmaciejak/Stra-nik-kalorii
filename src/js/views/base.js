@@ -14,6 +14,8 @@ export const elements = {
   likesMenu: document.querySelector(".likes__field"),
   likesList: document.querySelector(".likes__list"),
   headerBannerDOM: document.querySelector(".banner"),
+  bubblyButtons: document.getElementsByClassName("bubbly-button"),
+  menuList: document.querySelector(".banner"),
 };
 
 export const elementStrings = {

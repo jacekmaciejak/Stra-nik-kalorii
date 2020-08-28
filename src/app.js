@@ -63,12 +63,58 @@ elements.searchForm.addEventListener("submit", (e) => {
 //   controlSearch();
 // });
 
-elements.searchResultButtons.addEventListener("click", (e) => {
-  const btn = e.target.closest(".btn-inline");
-  if (btn) {
-    const goToPage = parseInt(btn.dataset.goto);
+// elements.searchResultButtons.addEventListener("click", (e) => {
+//   const btn = e.target.closest(".btn-inline");
+//   if (btn) {
+//     const goToPage = parseInt(btn.dataset.goto);
+//     searchView.clearResults();
+//     searchView.renderResults(state.search.result, goToPage);
+//   }
+// });
+
+/**
+ ************************************
+ ************************************
+ *********MENU CONTROLLER**********
+ ************************************
+ ************************************
+ */
+
+const controlMenu = async (query) => {
+  if (query) {
+    //2) New search object and add to state
+    state.search = new Search(query);
+    //3)Prepare UI for results
+    searchView.clearInput();
     searchView.clearResults();
-    searchView.renderResults(state.search.result, goToPage);
+    renderLoader(elements.searchResultContainer);
+    try {
+      //4) Search for recipes
+      await state.search.getResults();
+      // 5) Render results on UI
+      clearLoader();
+      searchView.renderResults(state.search.result);
+    } catch (err) {
+      alert("Sometching wrong with the search...");
+      clearLoader();
+    }
+  }
+};
+
+//Menu controller
+elements.menuList.addEventListener("click", (e) => {
+  e.preventDefault();
+  // const id = e.target.closest(".product");
+  const id = e.target.parentNode.parentNode.getAttribute("data-id");
+
+  if (id == 1) {
+    controlMenu("pizza");
+  } else if (id == 2) {
+    controlMenu("pasta");
+  } else if (id == 3) {
+    controlMenu("salad");
+  } else if (id == 4) {
+    controlMenu("hamburger");
   }
 });
 
@@ -264,10 +310,8 @@ const animateButton = function (e) {
   }, 700);
 };
 
-const bubblyButtons = document.getElementsByClassName("bubbly-button");
-
-for (var i = 0; i < bubblyButtons.length; i++) {
-  bubblyButtons[i].addEventListener("click", animateButton, false);
+for (var i = 0; i < elements.bubblyButtons.length; i++) {
+  elements.bubblyButtons[i].addEventListener("click", animateButton, false);
 }
 
 //---------------------------------
