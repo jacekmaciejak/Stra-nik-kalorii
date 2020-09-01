@@ -202,6 +202,9 @@ const controlList = () => {
   //Add each ingredient to the list and UI
   state.recipe.ingredients.forEach((el) => {
     const item = state.list.addItem(el.count, el.unit, el.ingredient);
+    // const title = state.list.addItem(el.image,
+    //   el.title)
+    // listView.renderItemTitle(title);
     listView.renderItem(item);
   });
 };
@@ -215,6 +218,7 @@ elements.closeCartBtn.addEventListener("click", list.hideCart);
 elements.cartContent.addEventListener("click", (e) => {
   const id = e.target.closest(".shopping__item").dataset.itemid;
   console.log(id);
+  console.log("click");
 
   //Handle the delete button
   if (e.target.matches(".shopping__delete, .shopping__delete *")) {
@@ -231,6 +235,9 @@ elements.cartContent.addEventListener("click", (e) => {
 elements.clearCartBtn.addEventListener("click", (e) => {
   state.items.deleteAllItems;
 });
+// clearCartBtn.addEventListener("click", () => {
+//   this.clearCart();
+// });
 
 /****************************************
  ****************************************
@@ -309,6 +316,9 @@ elements.recipe.addEventListener("click", (e) => {
     controlLike();
   }
 });
+// else if (e.target.matches(".recipe__btn,.recipe__btn *")) {
+//   window.location = `${recipe.url}`;
+// }
 
 // window.l = new List();
 
@@ -377,36 +387,32 @@ class UI {
     cartTotal.innerText = parseFloat(tempTotal.toFixed(2));
     cartItems.innerText = itemsTotal;
   }
-  addCartItem(item) {
-    const div = document.createElement("div");
-    div.classList.add("cart__item");
-    div.innerHTML = `<img src=${item.image} alt="product">
-                    <div>
-                        <h4>${item.title}</h4>
-                        <h5>${item.calories}</h5>
-                    </div>
-                    <div>
-                        <i class="fas fa-chevron-up" data-id=${item.id}></i>
-                        <p class="item-amount">${item.amount}</p>
-                        <i class="fas fa-chevron-down" data-id=${item.id}></i>
-                    </div>`;
-    cartContent.appendChild(div);
-  }
+  // addCartItem(item) {
+  //   const div = document.createElement("div");
+  //   div.classList.add("cart__item");
+  //   div.innerHTML = `<img src=${item.image} alt="product">
+  //                   <div>
+  //                       <h4>${item.title}</h4>
+  //                   </div>
+  //                   <div>
+  //                       <i class="fas fa-chevron-up" data-id=${item.id}></i>
+  //                       <p class="item-amount">${item.amount}</p>
+  //                       <i class="fas fa-chevron-down" data-id=${item.id}></i>
+  //                   </div>`;
+  //   cartContent.appendChild(div);
+  // }
 
   setupAPP() {
     cart = Storage.getCart();
     this.setCartValues(cart);
-    this.populateCart(cart);
+    // this.populateCart(cart);
     // cartBtn.addEventListener("click", this.showCart);
     // closeCartBtn.addEventListener("click", this.hideCart);
   }
-  populateCart(cart) {
-    cart.forEach((item) => this.addCartItem(item));
-  }
-  // hideCart() {
-  //   cartOverlay.classList.remove("transparentBcg");
-  //   cartDOM.classList.remove("showCart");
+  // populateCart(cart) {
+  //   cart.forEach((item) => this.addCartItem(item));
   // }
+
   cartLogic() {
     //clear cart button
     clearCartBtn.addEventListener("click", () => {
@@ -458,9 +464,9 @@ class UI {
     button.disabled = false;
     button.innerHTML = `<i class="fas fa__shopping-cart">add to cart</i>`;
   }
-  getSingleButton(id) {
-    return buttonsDOM.find((button) => button.dataset.id === id);
-  }
+  // getSingleButton(id) {
+  //   return buttonsDOM.find((button) => button.dataset.id === id);
+  // }
 }
 
 //LOCAL STORAGE, przechowuje dane w koszyku po odswiezeniu strony

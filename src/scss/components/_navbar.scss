@@ -17,6 +17,14 @@
          justify-content: space-between;
          padding: 0 1.5rem;
 
+         .navbar__title {
+             text-decoration: none;
+             text-transform: uppercase;
+             color: #ff0081;
+             font-weight: bold;
+             letter-spacing: 2px;
+         }
+
          .navbar__icon {
              font-size: 1.5rem;
          }

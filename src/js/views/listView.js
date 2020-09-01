@@ -1,4 +1,21 @@
 import { elements } from "./base";
+import { limitRecipeTitle } from "./searchView";
+
+// export const renderItemTitle = (item) => {
+//   const markup = `
+//                 <div class="shopping__title data-itemid=${item.id}>
+//                             <figure class="product__container">
+//                                 <img class="product__img" src="${
+//                                   item.image_url
+//                                 }" alt="${item.title}"/>
+//                             </figure>
+//                             <div class="product__text">
+//                                 <h4>${limitRecipeTitle(item.title)}</h4>
+//                             </div>
+//                 </div>
+// `;
+//     elements.cartContent.insertAdjacentHTML("afterbegin", markup);
+// };
 
 export const renderItem = (item) => {
   const markup = `
