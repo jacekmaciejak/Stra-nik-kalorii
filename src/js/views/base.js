@@ -16,6 +16,8 @@ export const elements = {
   headerBannerDOM: document.querySelector(".banner"),
   bubblyButtons: document.getElementsByClassName("bubbly-button"),
   menuList: document.querySelector(".banner"),
+  cartTotal: document.querySelector(".cart__total"),
+  cartItems: document.querySelector(".cart__items"),
 };
 
 export const elementStrings = {

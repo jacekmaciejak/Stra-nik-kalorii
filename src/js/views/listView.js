@@ -48,6 +48,8 @@ export const deleteAllItems = () => {
   elements.cartContent.innerHTML = "";
 };
 
+
+
 // export const clearCart = () => {
 //   let cartItems = cart.map((item) => item.id); //pobieramy id
 //   cartItems.forEach((id) => this.removeItem(id));

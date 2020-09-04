@@ -211,6 +211,8 @@ const controlList = () => {
     // listView.renderItemTitle(title);
     listView.renderItem(item);
   });
+  state.list.setCartValues(list)
+
 };
 //Show list of products
 elements.cartBtn.addEventListener("click", list.showCart);
@@ -239,6 +241,8 @@ elements.clearCartBtn.addEventListener("click", (e) => {
   state.list.deleteAllItems();
   //Delete from UI
   listView.deleteAllItems()
+  //Clear cart values
+  state.list.setCartValues()
 });
 
 
@@ -291,6 +295,8 @@ window.addEventListener("load", () => {
   //Restore likes,list items
   state.likes.readStorageLikes();
   state.items.readStorageList();
+  state.items.setCartValues(list)
+
   //Toggle like menu button
   likesView.toggleLikeMenu(state.likes.getNumLikes());
 
@@ -366,8 +372,8 @@ for (var i = 0; i < elements.bubblyButtons.length; i++) {
 // const cartDOM = document.querySelector(".cart__wrapper");
 // const cartOverlay = document.querySelector(".cart");
 // const clearCartBtn = document.querySelector(".clear__cart");
-const cartItems = document.querySelector(".cart__items");
-const cartTotal = document.querySelector(".cart__total");
+// const cartItems = document.querySelector(".cart__items");
+// const cartTotal = document.querySelector(".cart__total");
 // const cartContent = document.querySelector(".cart__content");
 const productsDOM = document.querySelector(".products__center");
 // const headerBannerDOM = document.querySelector(".banner");
@@ -380,16 +386,16 @@ let buttonsDOM = [];
 
 //DISPLAY GROUP OF MENU
 class UI {
-  setCartValues(cart) {
-    let tempTotal = 0;
-    let itemsTotal = 0;
-    cart.map((item) => {
-      tempTotal += item.calories * item.amount;
-      itemsTotal += item.amount;
-    });
-    cartTotal.innerText = parseFloat(tempTotal.toFixed(2));
-    cartItems.innerText = itemsTotal;
-  }
+  // setCartValues(cart) {
+  //   let tempTotal = 0;
+  //   let itemsTotal = 0;
+  //   cart.map((item) => {
+  //     tempTotal += item.calories * item.amount;
+  //     itemsTotal += item.amount;
+  //   });
+  //   cartTotal.innerText = parseFloat(tempTotal.toFixed(2));
+  //   cartItems.innerText = itemsTotal;
+  // }
   // addCartItem(item) {
   //   const div = document.createElement("div");
   //   div.classList.add("cart__item");
@@ -407,7 +413,7 @@ class UI {
 
   setupAPP() {
     cart = Storage.getCart();
-    this.setCartValues(cart);
+    // this.setCartValues(cart);
     // this.populateCart(cart);
     // cartBtn.addEventListener("click", this.showCart);
     // closeCartBtn.addEventListener("click", this.hideCart);
@@ -417,10 +423,7 @@ class UI {
   // }
 
   cartLogic() {
-    //clear cart button
-    clearCartBtn.addEventListener("click", () => {
-      this.clearCart();
-    });
+
     //cart functionality
     cartContent.addEventListener("click", (event) => {
       if (event.target.classList.contains("remove__item")) {
@@ -452,21 +455,15 @@ class UI {
       }
     });
   }
-  clearCart() {
-    let cartItems = cart.map((item) => item.id); //pobieramy id
-    cartItems.forEach((id) => this.removeItem(id));
-    while (cartContent.children.length > 0) {
-      cartContent.removeChild(cartContent.children[0]);
-    }
-  }
-  removeItem(id) {
-    cart = cart.filter((item) => item.id !== id);
-    this.setCartValues(cart);
-    Storage.saveCart(cart);
-    let button = this.getSingleButton(id);
-    button.disabled = false;
-    button.innerHTML = `<i class="fas fa__shopping-cart">add to cart</i>`;
-  }
+
+  // removeItem(id) {
+  //   cart = cart.filter((item) => item.id !== id);
+  //   this.setCartValues(cart);
+  //   Storage.saveCart(cart);
+  //   let button = this.getSingleButton(id);
+  //   button.disabled = false;
+  //   button.innerHTML = `<i class="fas fa__shopping-cart">add to cart</i>`;
+  // }
   // getSingleButton(id) {
   //   return buttonsDOM.find((button) => button.dataset.id === id);
   // }

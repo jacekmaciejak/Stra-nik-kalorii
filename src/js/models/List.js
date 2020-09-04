@@ -27,9 +27,7 @@ export default class List {
   updateCount(id, newCount) {
     this.items.find((el) => el.id === id).count = newCount;
   }
-  getNumItems() {
-    return this.items.length;
-  }
+
   persistDataList() {
     localStorage.setItem("items", JSON.stringify(this.items));
   }
@@ -41,6 +39,18 @@ export default class List {
   deleteAllItems() {
     this.items = [];
     this.persistDataList();
+  }
+  setCartValues(items) {
+    let tempTotal = 0;
+    let itemsTotal = 0;
+    // this.items.map((item) => {
+    //   tempTotal += item.length;
+    //   itemsTotal += item.length;
+    // });
+    tempTotal = this.items.length;
+    itemsTotal = this.items.length;
+    elements.cartTotal.innerHTML = tempTotal;
+    elements.cartItems.innerHTML = itemsTotal;
   }
 }
 export const showCart = () => {
