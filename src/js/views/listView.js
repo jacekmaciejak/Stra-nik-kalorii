@@ -43,6 +43,11 @@ export const deleteItem = (id) => {
   const item = document.querySelector(`[data-itemid="${id}"]`);
   if (item) item.parentElement.removeChild(item);
 };
+
+export const deleteAllItems = () => {
+  elements.cartContent.innerHTML = "";
+};
+
 // export const clearCart = () => {
 //   let cartItems = cart.map((item) => item.id); //pobieramy id
 //   cartItems.forEach((id) => this.removeItem(id));

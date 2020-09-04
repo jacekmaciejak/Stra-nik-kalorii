@@ -10,7 +10,11 @@ import * as listView from "./js/views/listView";
 import * as likesView from "./js/views/likesView";
 import * as list from "./js/models/List";
 import * as menuView from "./js/views/menuView";
-import { elements, renderLoader, clearLoader } from "./js/views/base";
+import {
+  elements,
+  renderLoader,
+  clearLoader
+} from "./js/views/base";
 
 const state = {};
 // window.state = state;
@@ -217,10 +221,11 @@ elements.closeCartBtn.addEventListener("click", list.hideCart);
 //Handle delete and update list item events
 elements.cartContent.addEventListener("click", (e) => {
   const id = e.target.closest(".shopping__item").dataset.itemid;
+
   //Handle the delete button
   if (e.target.matches(".shopping__delete, .shopping__delete *")) {
     //Delete from state
-    state.list.deleteItem(id); //list
+    state.list.deleteItem(id);
     //Delete from UI
     listView.deleteItem(id);
     //Handle the count update
@@ -230,11 +235,12 @@ elements.cartContent.addEventListener("click", (e) => {
   }
 });
 elements.clearCartBtn.addEventListener("click", (e) => {
-  state.items.deleteAllItems;
+  //Delete from state
+  state.list.deleteAllItems();
+  //Delete from UI
+  listView.deleteAllItems()
 });
-// clearCartBtn.addEventListener("click", () => {
-//   this.clearCart();
-// });
+
 
 /****************************************
  ****************************************
@@ -482,9 +488,8 @@ class Storage {
     localStorage.setItem("cart", JSON.stringify(cart));
   }
   static getCart() {
-    return localStorage.getItem("cart")
-      ? JSON.parse(localStorage.getItem("cart"))
-      : [];
+    return localStorage.getItem("cart") ?
+      JSON.parse(localStorage.getItem("cart")) : [];
   }
 }
 //wywolanie funkcji przy ładowaniu strony
