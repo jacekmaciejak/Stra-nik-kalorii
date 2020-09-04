@@ -217,13 +217,10 @@ elements.closeCartBtn.addEventListener("click", list.hideCart);
 //Handle delete and update list item events
 elements.cartContent.addEventListener("click", (e) => {
   const id = e.target.closest(".shopping__item").dataset.itemid;
-  console.log(id);
-  console.log("click");
-
   //Handle the delete button
   if (e.target.matches(".shopping__delete, .shopping__delete *")) {
     //Delete from state
-    state.items.deleteItem(id); //list
+    state.list.deleteItem(id); //list
     //Delete from UI
     listView.deleteItem(id);
     //Handle the count update
@@ -365,7 +362,7 @@ for (var i = 0; i < elements.bubblyButtons.length; i++) {
 // const clearCartBtn = document.querySelector(".clear__cart");
 const cartItems = document.querySelector(".cart__items");
 const cartTotal = document.querySelector(".cart__total");
-const cartContent = document.querySelector(".cart__content");
+// const cartContent = document.querySelector(".cart__content");
 const productsDOM = document.querySelector(".products__center");
 // const headerBannerDOM = document.querySelector(".banner");
 //CART

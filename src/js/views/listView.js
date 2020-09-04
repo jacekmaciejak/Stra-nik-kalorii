@@ -19,7 +19,7 @@ import { limitRecipeTitle } from "./searchView";
 
 export const renderItem = (item) => {
   const markup = `
-                <li class="shopping__item data-itemid=${item.id}">
+                <li class="shopping__item" data-itemid=${item.id}>
                     <div class="shopping__count">
                         <i class="fas fa-chevron-up" data-id=${item.id}></i>
                         <input type="number" value="${item.count}" step="${item.count}" class="shopping__count-value">
