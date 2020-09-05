@@ -56,7 +56,7 @@ export const deleteAllItems = () => {
 //   while (cartContent.children.length > 0) {
 //     cartContent.removeChild(cartContent.children[0]);
 //   }
-// };
+// }
 
 /* <img src= ${item.image} alt="product" >
     <div>

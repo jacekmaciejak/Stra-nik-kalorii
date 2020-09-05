@@ -1,104 +1,88 @@
-// @mixin clearfix {
-//     &::after {
-//         content: "";
-//         display: table;
-//         clear: both;
-//     }
-// }
 
-// @mixin absCenter {
-//     position: absolute;
-//     top: 50%;
-//     left: 50%;
-//     transform: translate(-50%, -50%);
-// }
+/*MEDIA QUERY MANAGER*/
+
+/*
+
+0 - 600px: Phone
+600 - 900pz: Tablet portrait
+900 - 1200px: Tablet landscape
+1200 - 1800 px is where our normal syles apply
+1800px + : Big desktop
 
 
+$breakpoint argument choices:
 
-// /*MEDIA QUERY MANAGER*/
+- phone
+- tab-port
+- tab-land
+- big-desktop
 
-// /*
+1em = 16px
 
-// 0 - 600px: Phone
-// 600 - 900pz: Tablet portrait
-// 900 - 1200px: Tablet landscape
-// 1200 - 1800 px is where our normal syles apply
-// 1800px + : Big desktop
+*/
 
+@mixin respond ($breakpoint) {
 
-// $breakpoint argument choices:
+    @if $breakpoint==phone {
+        @media (max-width: 37.5em) {
+            //600px
+            @content
+        }
 
-// - phone
-// - tab-port
-// - tab-land
-// - big-desktop
+        ;
+    }
 
-// 1em = 16px
+    @if $breakpoint==phone-medium {
+        @media (max-width: 46.25em) {
+            //740px
+            @content
+        }
 
-// */
+        ;
+    }
 
-// @mixin respond ($breakpoint) {
+    @if $breakpoint==phone-large {
+        @media (max-width: 50em) {
+            //800px
+            @content
+        }
 
-//     @if $breakpoint==phone {
-//         @media (max-width: 37.5em) {
-//             //600px
-//             @content
-//         }
+        ;
+    }
 
-//         ;
-//     }
+    @if $breakpoint==tab-port {
+        @media (max-width: 56.25em) {
+            //900px
+            @content
+        }
 
-//     @if $breakpoint==phone-medium {
-//         @media (max-width: 46.25em) {
-//             //740px
-//             @content
-//         }
+        ;
+    }
 
-//         ;
-//     }
+    @if $breakpoint==tab-land {
+        @media (max-width: 68.75em) {
+            //1100px
+            @content
+        }
 
-//     @if $breakpoint==phone-large {
-//         @media (max-width: 50em) {
-//             //800px
-//             @content
-//         }
+        ;
+    }
 
-//         ;
-//     }
+    @if $breakpoint==big-desktop {
+        @media (min-width: 112.5em) {
+            //1800px
+            @content
+        }
 
-//     @if $breakpoint==tab-port {
-//         @media (max-width: 56.25em) {
-//             //900px
-//             @content
-//         }
+        ;
+    }
 
-//         ;
-//     }
+    @if $breakpoint==min-phone-medium {
+        @media (min-width: 46.25em) {
+            //min 740px
+            @content
+        }
 
-//     @if $breakpoint==tab-land {
-//         @media (max-width: 75em) {
-//             //1200px
-//             @content
-//         }
-
-//         ;
-//     }
-
-//     @if $breakpoint==big-desktop {
-//         @media (min-width: 112.5em) {
-//             //1800px
-//             @content
-//         }
-
-//         ;
-//     }
-
-//     @if $breakpoint==min-phone-medium {
-//         @media (min-width: 46.25em) {
-//             //min 740px
-//             @content
-//         }
-
-//         ;
-//     }
-// }
+        ;
+    }
+}

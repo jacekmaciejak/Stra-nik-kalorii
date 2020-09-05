@@ -19,7 +19,7 @@
         font-family: inherit;
         color: inherit;
         font-size: 1.2rem;
-        width: 100%;
+        max-width: 100%;
 
         &:focus {
             outline: none;
@@ -32,9 +32,7 @@
     }
 
     .btn {
-        // background: linear-gradient(90deg,
-        //         rgba(183, 237, 249, 1) 0%,
-        //         rgba(121, 121, 237, 1) 100%);
+
         border-radius: 10rem;
         border: none;
         text-transform: uppercase;
@@ -46,10 +44,6 @@
         padding: .5rem 2rem;
         font-size: 1rem;
 
-        // &:hover {
-        //     transform: scale(1.05);
-
-        // }
 
         &:focus {
             outline: none;
