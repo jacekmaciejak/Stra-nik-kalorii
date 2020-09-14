@@ -200,10 +200,6 @@
         }
     }
 
-
-
-
-
     &__count {
         margin-right: 0.5rem;
         flex: 0 0 auto;
@@ -296,5 +292,9 @@
         height: 1.5rem;
         width: 1.5rem;
         fill: currentColor;
+    }
+
+    .recipe__btn--add-off {
+        // visibility: hidden;
     }
 }

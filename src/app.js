@@ -10,11 +10,7 @@ import * as listView from "./js/views/listView";
 import * as likesView from "./js/views/likesView";
 import * as list from "./js/models/List";
 import * as menuView from "./js/views/menuView";
-import {
-  elements,
-  renderLoader,
-  clearLoader
-} from "./js/views/base";
+import { elements, renderLoader, clearLoader } from "./js/views/base";
 
 const state = {};
 // window.state = state;
@@ -143,6 +139,13 @@ elements.menuList.addEventListener("click", (e) => {
     controlMenu("lasagna");
   }
 });
+document.addEventListener("DOMContentLoaded", () => {
+  const listofproducts = new Menu();
+  //GET ALL PRODUCTS
+  listofproducts.getListOfProducts().then((products) => {
+    menuView.displayListOfProducts(products);
+  });
+});
 
 /**
  ********************************
@@ -211,8 +214,7 @@ const controlList = () => {
     // listView.renderItemTitle(title);
     listView.renderItem(item);
   });
-  state.list.setCartValues(list)
-
+  state.list.setCartValues(list);
 };
 //Show list of products
 elements.cartBtn.addEventListener("click", list.showCart);
@@ -240,11 +242,10 @@ elements.clearCartBtn.addEventListener("click", (e) => {
   //Delete from state
   state.list.deleteAllItems();
   //Delete from UI
-  listView.deleteAllItems()
+  listView.deleteAllItems();
   //Clear cart values
-  state.list.setCartValues()
+  state.list.setCartValues();
 });
-
 
 /****************************************
  ****************************************
@@ -295,7 +296,7 @@ window.addEventListener("load", () => {
   //Restore likes,list items
   state.likes.readStorageLikes();
   state.items.readStorageList();
-  state.items.setCartValues(list)
+  state.items.setCartValues(list);
 
   //Toggle like menu button
   likesView.toggleLikeMenu(state.likes.getNumLikes());
@@ -304,7 +305,12 @@ window.addEventListener("load", () => {
   state.likes.likes.forEach((like) => likesView.renderLike(like));
   state.items.items.forEach((item) => listView.renderItem(item));
 });
-
+/****************************************
+ ****************************************
+ ************recipe buttons clicks********
+ ****************************************
+ ****************************************
+ */
 //Handling recipe button clicks
 elements.recipe.addEventListener("click", (e) => {
   if (e.target.matches(".btn-decrease,.btn-decrease *")) {
@@ -320,11 +326,13 @@ elements.recipe.addEventListener("click", (e) => {
   } else if (e.target.matches(".recipe__btn--add,.recipe__btn--add *")) {
     //Add ingredients to shopping list
     controlList();
+    // recipeView.buttonRecipeOff();
   } else if (e.target.matches(".recipe__love,.recipe__love *")) {
     //Like controller
     controlLike();
   }
 });
+
 // else if (e.target.matches(".recipe__btn,.recipe__btn *")) {
 //   window.location = `${recipe.url}`;
 // }
@@ -362,10 +370,6 @@ for (var i = 0; i < elements.bubblyButtons.length; i++) {
 //---------------------------------
 //---------------------------------
 //---------------------------------
-//---------------------------------
-//---------------------------------
-//---------------------------------
-//---------------------------------
 
 // const cartBtn = document.querySelector(".cart__btn");
 // const closeCartBtn = document.querySelector(".cart__close");
@@ -380,9 +384,9 @@ const productsDOM = document.querySelector(".products__center");
 //CART
 let cart = [];
 //List of products
-let mainProducts = [];
+// let mainProducts = [];
 //buttons
-let buttonsDOM = [];
+// let buttonsDOM = [];
 
 //DISPLAY GROUP OF MENU
 class UI {
@@ -411,19 +415,18 @@ class UI {
   //   cartContent.appendChild(div);
   // }
 
-  setupAPP() {
-    cart = Storage.getCart();
-    // this.setCartValues(cart);
-    // this.populateCart(cart);
-    // cartBtn.addEventListener("click", this.showCart);
-    // closeCartBtn.addEventListener("click", this.hideCart);
-  }
+  // setupAPP() {
+  //   cart = Storage.getCart();
+  //   // this.setCartValues(cart);
+  //   // this.populateCart(cart);
+  //   // cartBtn.addEventListener("click", this.showCart);
+  //   // closeCartBtn.addEventListener("click", this.hideCart);
+  // }
   // populateCart(cart) {
   //   cart.forEach((item) => this.addCartItem(item));
   // }
 
   cartLogic() {
-
     //cart functionality
     cartContent.addEventListener("click", (event) => {
       if (event.target.classList.contains("remove__item")) {
@@ -470,35 +473,34 @@ class UI {
 }
 
 //LOCAL STORAGE, przechowuje dane w koszyku po odswiezeniu strony
-class Storage {
-  static saveProducts(products) {
-    localStorage.setItem("products", JSON.stringify(products));
-  }
-  static saveMeat(meat) {
-    localStorage.setItem("meat", JSON.stringify(meat));
-  }
-  static getProduct(id) {
-    let products = JSON.parse(localStorage.getItem("products"));
-    return products.find((product) => product.id === id);
-  }
-  static saveCart(cart) {
-    localStorage.setItem("cart", JSON.stringify(cart));
-  }
-  static getCart() {
-    return localStorage.getItem("cart") ?
-      JSON.parse(localStorage.getItem("cart")) : [];
-  }
-}
-//wywolanie funkcji przy ładowaniu strony
-document.addEventListener("DOMContentLoaded", () => {
-  const ui = new UI();
-  const listofproducts = new Menu();
-  // const products = new Products();
-  // const meat = new Meat();
-  //SETUP APP
-  ui.setupAPP();
-  //GET ALL PRODUCTS
-  listofproducts.getListOfProducts().then((products) => {
-    menuView.displayListOfProducts(products);
-  });
-});
+// class Storage {
+//   static saveProducts(products) {
+//     localStorage.setItem("products", JSON.stringify(products));
+//   }
+//   static saveMeat(meat) {
+//     localStorage.setItem("meat", JSON.stringify(meat));
+//   }
+//   static getProduct(id) {
+//     let products = JSON.parse(localStorage.getItem("products"));
+//     return products.find((product) => product.id === id);
+//   }
+//   static saveCart(cart) {
+//     localStorage.setItem("cart", JSON.stringify(cart));
+//   }
+//   static getCart() {
+//     return localStorage.getItem("cart")
+//       ? JSON.parse(localStorage.getItem("cart"))
+//       : [];
+//   }
+// }
+// //wywolanie funkcji przy ładowaniu strony
+// document.addEventListener("DOMContentLoaded", () => {
+//   // const ui = new UI();
+//   const listofproducts = new Menu();
+//   //SETUP APP
+//   // ui.setupAPP();
+//   //GET ALL PRODUCTS
+//   listofproducts.getListOfProducts().then((products) => {
+//     menuView.displayListOfProducts(products);
+//   });
+// });
