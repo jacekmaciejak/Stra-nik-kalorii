@@ -1,3 +1,5 @@
+@import"scss/abstracts/variables";
+
  .navbar {
      position: sticky;
      top: 0;
@@ -50,7 +52,7 @@
                  position: absolute;
                  top: -8px;
                  right: -8px;
-                 background: #f09d51;
+                 background: $mainColor;
                  padding: 0 5px;
                  border-radius: 30%;
                  color: #fff;

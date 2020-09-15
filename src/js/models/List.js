@@ -15,7 +15,7 @@ export default class List {
     };
     this.items.push(item);
     //Persist data in localStorage
-    this.persistDataList();
+    // this.persistDataList();
     return item;
   }
   deleteItem(id) {
