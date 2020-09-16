@@ -1,4 +1,4 @@
-# Straznik-kalorii
+# Strażnik-kalorii
 
 ## [Live Site](https://jacekmaciejak.github.io/Straznik-kalorii/)
 
