@@ -1,10 +1,10 @@
 {
   "name": "straznik-kalorii",
   "version": "1.0.0",
-  "description": "",
+  "description": "Application about meal recipes",
   "main": "webpack.common.js",
   "scripts": {
-    "start": "webpack-dev-server --config webpack.dev.js --open --watch",
+    "start": "webpack-dev-server --config webpack.dev.js --open --watch --source-map",
     "build": "webpack --config webpack.prod.js"
   },
   "repository": {
