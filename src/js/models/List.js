@@ -22,23 +22,23 @@ export default class List {
     const index = this.items.findIndex((el) => el.id === id);
     this.items.splice(index, 1);
     //Persist data in localStorage
-    this.persistDataList();
+    // this.persistDataList();
   }
   updateCount(id, newCount) {
     this.items.find((el) => el.id === id).count = newCount;
   }
 
-  persistDataList() {
-    localStorage.setItem("items", JSON.stringify(this.items));
-  }
-  readStorageList() {
-    const storage = JSON.parse(localStorage.getItem("items"));
-    //Restore likes from the localStorage
-    if (storage) this.items = storage;
-  }
+  // persistDataList() {
+  //   localStorage.setItem("items", JSON.stringify(this.items));
+  // }
+  // readStorageList() {
+  //   const storage = JSON.parse(localStorage.getItem("items"));
+  //   //Restore likes from the localStorage
+  //   if (storage) this.items = storage;
+  // }
   deleteAllItems() {
     this.items = [];
-    this.persistDataList();
+    // this.persistDataList();
   }
   setCartValues(items) {
     let tempTotal = 0;

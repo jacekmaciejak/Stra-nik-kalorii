@@ -131,8 +131,8 @@ export const updateServingsIngredients = (recipe) => {
     el.textContent = formatCount(recipe.ingredients[i].count);
   });
 };
-export const buttonRecipeOff = (e) => {
-  document
-    .querySelector(".recipe__btn--add")
-    .setAttribute("class", ".recipe__btn--add-off");
-};
+// export const buttonRecipeOff = (e) => {
+//   document
+//     .querySelector(".recipe__btn--add")
+//     .setAttribute("class", ".recipe__btn--add-off");
+// };

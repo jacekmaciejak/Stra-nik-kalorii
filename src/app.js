@@ -205,6 +205,11 @@ const controlRecipe = async () => {
 
 const controlList = () => {
   //Create a new list if there is none yet
+  if (state.list) {
+    const recipeButtonAdd = document.querySelector(".recipe__btn--add");
+    recipeButtonAdd.style.visibility = "hidden";
+    console.log("jest lista");
+  }
   if (!state.list) state.list = new List();
   //Add each ingredient to the list and UI
   state.recipe.ingredients.forEach((el) => {
@@ -232,12 +237,16 @@ elements.cartContent.addEventListener("click", (e) => {
     state.list.deleteItem(id);
     //Delete from UI
     listView.deleteItem(id);
+  //Clear cart values
+  state.list.setCartValues();
     //Handle the count update
   } else if (e.target.matches(".shopping__count-value")) {
     const val = parseFloat(e.target.value, 10);
     state.list.updateCount(id, val);
   }
 });
+
+//Handle the delete ALL products button
 elements.clearCartBtn.addEventListener("click", (e) => {
   //Delete from state
   state.list.deleteAllItems();
@@ -325,8 +334,9 @@ elements.recipe.addEventListener("click", (e) => {
     recipeView.updateServingsIngredients(state.recipe);
   } else if (e.target.matches(".recipe__btn--add,.recipe__btn--add *")) {
     //Add ingredients to shopping list
+    const recipeButtonAdd = document.querySelector(".recipe__btn--add");
+    recipeButtonAdd.style.visibility = "hidden";
     controlList();
-    // recipeView.buttonRecipeOff();
   } else if (e.target.matches(".recipe__love,.recipe__love *")) {
     //Like controller
     controlLike();

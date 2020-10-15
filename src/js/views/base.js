@@ -5,6 +5,7 @@ export const elements = {
   searchResultList: document.querySelector(".products__list"),
   searchResultButtons: document.querySelector(".products__buttons"),
   recipe: document.querySelector(".recipe"),
+  recipeButtonAdd: document.querySelector(".recipe__btn--add"),
   cartContent: document.querySelector(".cart__content"),
   cartDOM: document.querySelector(".cart__wrapper"),
   cartOverlay: document.querySelector(".cart"),
