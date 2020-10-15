@@ -208,15 +208,15 @@ const controlList = () => {
   if (state.list) {
     const recipeButtonAdd = document.querySelector(".recipe__btn--add");
     recipeButtonAdd.style.visibility = "hidden";
-    console.log("jest lista");
   }
   if (!state.list) state.list = new List();
+
   //Add each ingredient to the list and UI
   state.recipe.ingredients.forEach((el) => {
     const item = state.list.addItem(el.count, el.unit, el.ingredient);
     // const title = state.list.addItem(el.image,
     //   el.title)
-    // listView.renderItemTitle(title);
+    // listView.renderContainer(title);
     listView.renderItem(item);
   });
   state.list.setCartValues(list);
@@ -224,8 +224,10 @@ const controlList = () => {
 //Show list of products
 elements.cartBtn.addEventListener("click", list.showCart);
 
-//Hide list of products
+//Hide list of products after click on button
 elements.closeCartBtn.addEventListener("click", list.hideCart);
+//Hide list of products after click outside cart
+// elements.cartOverlay.addEventListener("click", list.hideCart);
 
 //Handle delete and update list item events
 elements.cartContent.addEventListener("click", (e) => {
@@ -254,6 +256,11 @@ elements.clearCartBtn.addEventListener("click", (e) => {
   listView.deleteAllItems();
   //Clear cart values
   state.list.setCartValues();
+  //Show  recipe button after deleting list of products
+   const recipeButtonAdd = document.querySelector(".recipe__btn--add");
+    recipeButtonAdd.style.visibility = "visible";
+//Close card after 1.2s
+    setTimeout(list.hideCart,1200);
 });
 
 /****************************************

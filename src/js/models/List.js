@@ -6,13 +6,14 @@ export default class List {
     this.items = [];
   }
 
-  addItem(count, unit, ingredient) {
+  addItem(count, unit, ingredient, image_url) {
     const item = {
       id: uniqid(),
       count,
       unit,
       ingredient,
-    };
+image_url
+      };
     this.items.push(item);
     //Persist data in localStorage
     // this.persistDataList();
@@ -39,6 +40,7 @@ export default class List {
   deleteAllItems() {
     this.items = [];
     // this.persistDataList();
+
   }
   setCartValues(items) {
     let tempTotal = 0;

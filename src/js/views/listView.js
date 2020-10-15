@@ -1,7 +1,7 @@
 import { elements } from "./base";
 import { limitRecipeTitle } from "./searchView";
 
-// export const renderItemTitle = (item) => {
+// export const renderContainer = (item) => {
 //   const markup = `
 //                 <div class="shopping__title data-itemid=${item.id}>
 //                             <figure class="product__container">
@@ -14,11 +14,12 @@ import { limitRecipeTitle } from "./searchView";
 //                             </div>
 //                 </div>
 // `;
-//     elements.cartContent.insertAdjacentHTML("afterbegin", markup);
+//     elements.cartContent.insertAdjacentHTML("beforeend", markup);
 // };
 
 export const renderItem = (item) => {
   const markup = `
+
                 <li class="shopping__item" data-itemid=${item.id}>
                     <div class="shopping__count">
                         <i class="fas fa-chevron-up" data-id=${item.id}></i>
@@ -46,6 +47,7 @@ export const deleteItem = (id) => {
 
 export const deleteAllItems = () => {
   elements.cartContent.innerHTML = "";
+
 };
 
 

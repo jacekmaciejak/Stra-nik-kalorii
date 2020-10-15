@@ -18,7 +18,7 @@ export const elements = {
   bubblyButtons: document.getElementsByClassName("bubbly-button"),
   menuList: document.querySelector(".banner"),
   cartTotal: document.querySelector(".cart__total"),
-  cartItems: document.querySelector(".cart__items"),
+  cartItems: document.querySelector(".cart__items")
 };
 
 export const elementStrings = {
