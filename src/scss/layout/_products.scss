@@ -10,6 +10,7 @@
     @include respond(tab-land) {
         //width < 1100px
         grid-template-columns: 1fr;
+height: auto;
     }
 
     .products {
@@ -37,7 +38,7 @@
                 width: 90vw;
                 grid-template-columns: repeat(auto-fit, minmax(5rem, 1fr));
                 grid-column-gap: 2rem;
-
+row-gap: 1rem;
             }
 
             // padding: 4rem 0;
@@ -55,7 +56,9 @@
                 list-style: none;
                 display: grid;
                 justify-content: center;
-
+@include respond(tab-land) {
+    //width < 1100px
+display: block;}
 
 
                 &__link {

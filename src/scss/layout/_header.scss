@@ -8,12 +8,11 @@
 
     .banner {
         width: 90vw;
-        margin: 0 auto;
-        // max-width: 1200px;
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(5rem, 1fr));
         grid-column-gap: 1.5rem;
         row-gap: 1rem;
+        margin: 20px;
 
         // grid-row-gap: 2rem;
         @include respond(tab-land) {
