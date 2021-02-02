@@ -22,10 +22,8 @@ export const renderItem = (item) => {
 
                 <li class="shopping__item" data-itemid=${item.id}>
                     <div class="shopping__count">
-                        <i class="fas fa-chevron-up" data-id=${item.id}></i>
                         <input type="number" value="${item.count}" step="${item.count}" class="shopping__count-value">
                         <p>${item.unit}</p>
-                        <i class="fas fa-chevron-down" data-id=${item.id}></i>
 
                     </div>
                     <p class="shopping__description">${item.ingredient}</p>
@@ -39,6 +37,9 @@ export const renderItem = (item) => {
 `;
   elements.cartContent.insertAdjacentHTML("beforeend", markup);
 };
+
+                        // <i class="fas fa-chevron-up" data-id=${item.id}></i>
+                        // <i class="fas fa-chevron-down" data-id=${item.id}></i>
 
 export const deleteItem = (id) => {
   const item = document.querySelector(`[data-itemid="${id}"]`);
